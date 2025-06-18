@@ -1,187 +1,273 @@
 import React from 'react';
-import { Linkedin, Mail, Award, GraduationCap } from 'lucide-react';
+import { Linkedin, Mail, GraduationCap } from 'lucide-react';
 
 const Team = () => {
+  /* ──────────────────────────────
+     1.  FOUNDER
+  ────────────────────────────── */
   const founder = {
-    name: "Mr Vineet Batta",
-    title: "Founder",
-    image: "",
-    bio: "Orthopaedic Surgeon , Luton & Dunstable University Hospital NHS Trust, UK Honorary Lecturer ,Department of Bioengineering and Surgical Technology ,Royal National Orthopaedic Hospital Stanmore, UCL, UK",
-    education: "MBBS,MS(Trauma),Dip Sports Med,FRCS (Orth),MD(Ortho Research & Bio Med Eng.)",
-    linkedin: "#",
-    email: "sarah.johnson@aiimaging.com"
+    name: 'Dr. Vineet Batta',
+    title: 'Founder & CEO, Unicorn Medics',
+    image: '',              // ← add photo
+    email: 'vineet.batta@unicornmedics.com', // placeholder
+    linkedin: '#',
+    education:
+      'MBBS • MS (Trauma) • Dip Sports Med • FRCS (Orth) • MD (Ortho Research & Bio Med Eng.)',
+    bio: `Orthopedic surgeon specialising in trauma, hip & knee replacement. Senior Clinical
+          Fellow, Luton & Dunstable University NHS Hospital; Honorary Lecturer, Royal National
+          Orthopaedic Hospital, UCL. Award‑winning researcher with >£90 k in competitive grants.`
   };
 
-  const technicalAdvisor = {
-    name: "Dr. Michael Chen",
-    title: "Chief Technical Advisor",
-    image: "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-    bio: "AI researcher specializing in medical imaging and deep learning. Former lead scientist at Google DeepMind Health division.",
-    education: "PhD Computer Science, Stanford University",
-    linkedin: "#",
-    email: "michael.chen@aiimaging.com"
-  };
-
-  const advisoryBoard = [
-    {
-      name: "Dr. Emily Rodriguez",
-      title: "Orthopedic Surgery Advisor",
-      image: "https://images.pexels.com/photos/5452268/pexels-photo-5452268.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-      bio: "Senior orthopedic surgeon at Mayo Clinic with expertise in complex joint replacements and revision surgeries.",
-      linkedin: "#"
-    },
-    {
-      name: "Dr. James Thompson",
-      title: "Radiology Advisor",
-      image: "https://images.pexels.com/photos/5452274/pexels-photo-5452274.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-      bio: "Chief of Radiology at Johns Hopkins Hospital, specializing in musculoskeletal imaging and interventional radiology.",
-      linkedin: "#"
-    },
-    {
-      name: "Dr. Lisa Park",
-      title: "AI Ethics Advisor",
-      image: "https://images.pexels.com/photos/5452299/pexels-photo-5452299.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-      bio: "Professor of Medical Ethics and AI Policy at Stanford University. Expert in healthcare AI governance and patient privacy.",
-      linkedin: "#"
-    }
-  ];
-
+  /* ──────────────────────────────
+     2.  MENTORS
+  ────────────────────────────── */
   const mentors = [
     {
-      name: "Prof. Robert Williams",
-      title: "Industry Mentor",
-      image: "https://images.pexels.com/photos/5452297/pexels-photo-5452297.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-      bio: "Former CEO of MedTech Solutions. 25+ years of experience in healthcare technology commercialization.",
-      linkedin: "#"
+      name: 'Dr Srinath Kamineni',
+      title: 'Associate Professor of Orthopaedic Surgery',
+      image: '', // add later
+      linkedin: '#',
+      bio: ''    // will fill later
     },
     {
-      name: "Dr. Amanda Foster",
-      title: "Research Mentor",
-      image: "https://images.pexels.com/photos/5452290/pexels-photo-5452290.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-      bio: "Director of Biomedical Engineering at MIT. Pioneer in medical device innovation and translational research.",
-      linkedin: "#"
+      name: 'Dr Parth Desai',
+      title: 'Founder & CEO, Implant Identifier',
+      image: '',
+      linkedin: '#',
+      bio: ''
     }
   ];
 
-  const TeamCard = ({ member, isFounder = false, showEmail = false }) => (
-    <div className={`bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 ${isFounder ? 'md:col-span-2' : ''}`}>
-      <div className="p-6">
-        <div className="flex flex-col items-center text-center">
-          <div className="w-32 h-32 mb-4 overflow-hidden rounded-full border-4 border-gradient-to-r from-primary-500 to-emerald-500">
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-full object-cover"
-            />
+  /* ──────────────────────────────
+     3.  TECHNICAL  ADVISORS
+  ────────────────────────────── */
+  const technicalAdvisors = [
+    {
+      name: 'Richard Armstrong',
+      title: 'Head of Registries, NEC Software Solutions',
+      image: '',
+      linkedin: '#',
+      bio: ''
+    },
+    {
+      name: 'Prof Bhushan Borotikar',
+      title: 'Head, Symbiosis Centre for Medical Image Analysis',
+      image: '',
+      linkedin: '#',
+      bio: ''
+    },
+    {
+      name: 'Prof Malathy',
+      title: 'Professor, Networking & Communications',
+      image: '',
+      linkedin: '#',
+      bio: ''
+    },
+    {
+      name: 'Ass. Prof Dr Gayathri M',
+      title: 'Assistant Professor, Computing Technologies',
+      image: '',
+      linkedin: '#',
+      bio: ''
+    }
+  ];
+
+  /* ──────────────────────────────
+     4.  CORE  TEAM
+  ────────────────────────────── */
+  const coreTeam = [
+    { name: 'Kiruthika M', title: 'Research Associate', image: '', linkedin: '#', bio: '' },
+    { name: 'Auxilia',     title: 'Data Curator',      image: '', linkedin: '#', bio: '' },
+    { name: 'Mohit',       title: 'Post‑doctoral Fellow', image: '', linkedin: '#', bio: '' },
+    { name: 'Soumya',      title: 'Core Team',         image: '', linkedin: '#', bio: '' },
+    { name: 'Ramanathan',  title: 'Core Team',         image: '', linkedin: '#', bio: '' }
+  ];
+
+  /* ──────────────────────────────
+     CARD  COMPONENT
+  ────────────────────────────── */
+  const TeamCard = ({ member, showEmail = false }) => (
+    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+      <div className="p-6 flex flex-col items-center text-center">
+        <div className="w-32 h-32 mb-4 overflow-hidden rounded-full border-4 border-gradient-to-r from-primary-500 to-emerald-500">
+          <img
+            src={member.image || 'https://via.placeholder.com/300'}
+            alt={member.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+        <p className="text-primary-600 font-semibold mb-3">{member.title}</p>
+
+        {member.education && (
+          <div className="flex items-center text-sm text-gray-600 mb-3">
+            <GraduationCap className="w-4 h-4 mr-1" />
+            <span>{member.education}</span>
           </div>
-          
-          <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-          <p className="text-primary-600 font-semibold mb-3">{member.title}</p>
-          
-          {member.education && (
-            <div className="flex items-center text-sm text-gray-600 mb-3">
-              <GraduationCap className="w-4 h-4 mr-1" />
-              <span>{member.education}</span>
-            </div>
-          )}
-          
-          <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-            {member.bio}
-          </p>
-          
-          <div className="flex space-x-3">
+        )}
+
+        {member.bio && (
+          <p className="text-gray-600 text-sm mb-4 leading-relaxed">{member.bio}</p>
+        )}
+
+        <div className="flex space-x-3">
+          <a
+            href={member.linkedin}
+            className="p-2 bg-primary-50 text-primary-600 rounded-lg hover:bg-primary-100 transition-colors duration-200"
+          >
+            <Linkedin className="w-5 h-5" />
+          </a>
+          {showEmail && member.email && (
             <a
-              href={member.linkedin}
-              className="p-2 bg-primary-50 text-primary-600 rounded-lg hover:bg-primary-100 transition-colors duration-200"
+              href={`mailto:${member.email}`}
+              className="p-2 bg-emerald-50 text-emerald-600 rounded-lg hover:bg-emerald-100 transition-colors duration-200"
             >
-              <Linkedin className="w-5 h-5" />
+              <Mail className="w-5 h-5" />
             </a>
-            {showEmail && (
-              <a
-                href={`mailto:${member.email}`}
-                className="p-2 bg-emerald-50 text-emerald-600 rounded-lg hover:bg-emerald-100 transition-colors duration-200"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            )}
-          </div>
+          )}
         </div>
       </div>
     </div>
   );
 
+  /* ──────────────────────────────
+          RENDER
+  ────────────────────────────── */
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
+        {/* ── Header ─────────────────── */}
+        <header className="text-center mb-16">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Meet Our Team
+            Meet Our Team
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A diverse group of medical professionals, AI researchers, and industry experts united by a vision to transform surgical care through intelligent technology.
+            Experienced professionals dedicated to innovation in orthopedic
+            surgery, biomedical imaging, and AI.
           </p>
-        </div>
+        </header>
 
-        {/* Founder Section */}
+        {/* ── Founder ────────────────── */}
         <section className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Founder</h2>
-            <p className="text-lg text-gray-600">
-              Visionary leadership driving innovation in medical AI
-            </p>
           </div>
-          
           <div className="max-w-2xl mx-auto">
-            <TeamCard member={founder} showEmail={true} />
+            <TeamCard member={founder} showEmail />
           </div>
         </section>
 
-        {/* Technical Advisor Section */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Technical Advisor</h2>
-            <p className="text-lg text-gray-600">
-              Technical expertise guiding our AI development
-            </p>
-          </div>
-          
-          <div className="max-w-2xl mx-auto">
-            <TeamCard member={technicalAdvisor} showEmail={true} />
-          </div>
-        </section>
-
-        {/* Advisory Board Section */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Advisory Board</h2>
-            <p className="text-lg text-gray-600">
-              Expert advisors providing strategic guidance and clinical insights
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {advisoryBoard.map((member, index) => (
-              <TeamCard key={index} member={member} />
-            ))}
-          </div>
-        </section>
-
-        {/* Mentors Section */}
+        {/* ── Mentors ────────────────── */}
         <section className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Mentors</h2>
-            <p className="text-lg text-gray-600">
-              Industry veterans providing wisdom and strategic direction
-            </p>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {mentors.map((member, index) => (
-              <TeamCard key={index} member={member} />
+            {mentors.map((m, i) => (
+              <TeamCard key={i} member={m} />
             ))}
           </div>
         </section>
+
+        {/* ── Technical Advisors ─────── */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Technical Advisors
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {technicalAdvisors.map((t, i) => (
+              <TeamCard key={i} member={t} />
+            ))}
+          </div>
+        </section>
+
+        {/* ── Core Team ──────────────── */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Core Team</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {coreTeam.map((c, i) => (
+              <TeamCard key={i} member={c} />
+            ))}
+          </div>
+        </section>
+
+ {/* Collaborations Section */}
+<section className="mb-20">
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">Collaborations</h2>
+    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+      We collaborate with world-class hospitals, universities, and med-tech companies leading the way in orthopedic surgery and biomedical innovation.
+    </p>
+  </div>
+
+  <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+    {/* NEC Software Solutions */}
+    <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
+      <img
+        src="https://via.placeholder.com/150"
+        alt="NEC Software Solutions"
+        className="w-24 h-24 object-contain mb-4"
+      />
+      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+        National Joint Registry / NEC Software Solutions, UK
+      </h3>
+      <a
+        href="https://www.necsws.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-primary-600 hover:underline"
+      >
+        NEC Software Solutions | Orchestrating a Brighter World
+      </a>
+    </div>
+
+    {/* SRM Institute */}
+    <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
+      <img
+        src="https://via.placeholder.com/150"
+        alt="SRM Institute"
+        className="w-24 h-24 object-contain mb-4"
+      />
+      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+        SRM Institute of Science and Technology, Chennai
+      </h3>
+      <a
+        href="https://www.srmist.edu.in"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-primary-600 hover:underline"
+      >
+        SRM Institute of Science & Technology - Learn. Leap. Lead.
+      </a>
+    </div>
+
+    {/* Implant Identifier */}
+    <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
+      <img
+        src="https://via.placeholder.com/150"
+        alt="Implant Identifier"
+        className="w-24 h-24 object-contain mb-4"
+      />
+      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+        Implant Identifier App
+      </h3>
+      <a
+        href="https://www.implantidentifier.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-primary-600 hover:underline"
+      >
+        Implant Identifier
+      </a>
+    </div>
+  </div>
+</section>
+
       </div>
     </div>
   );
