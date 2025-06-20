@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home.tsx';
-import Team from './pages/Team.tsx'
+import Team from './pages/Team.tsx';
+import ImplantIdentification from './pages/ImplantIdentification.tsx'
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/team" element={<Team />} />
-            {/*<Route path="/implant-identification" element={<ImplantIdentification />} />
-            <Route path="/research" element={<Research />} />
+            <Route path="/implant-identification" element={<ImplantIdentification />} />
+{/*<Route path="/research" element={<Research />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />*/}
           </Routes>

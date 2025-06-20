@@ -55,14 +55,14 @@ const Home = () => {
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 animate-slide-up">
-            AI for Precision{' '}
+            Automated Identification{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-emerald-600">
-               Implant Detection from X-RAY, CT and MRI
+               & Analysis of medical  Implants visible on radiographic images X-ray ,CT & MRI scan
             </span>
           </h1>
           
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto animate-slide-up delay-100">
-            Using CT, MRI, and X-RAY Detection for patient-specific insights that transform surgical planning and improve patient outcomes.
+            Our system delivers patient-specific implant make and model detection, enhancing surgical planning, reducing revision errors, and improving clinical outcomes.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up delay-200">
@@ -86,15 +86,15 @@ const Home = () => {
           <div className="flex justify-center items-center space-x-6 text-sm text-gray-500 animate-slide-up delay-300">
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-primary-500 rounded-full"></div>
-              <span>CT Imaging</span>
+              <span>X-RAY detection</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-              <span>MRI Analysis</span>
+              <span>CT Imaging</span>
             </div>
             <div className="flex items-center space-x-2">
               <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-              <span>X-RAY etection</span>
+              <span>MRI Analysis</span>
             </div>
           </div>
         </div>
@@ -207,7 +207,7 @@ const Home = () => {
                   <span className="text-white font-bold">1</span>
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">Input</h4>
-                <p className="text-sm text-gray-600">CT/MRI/ERD imaging data</p>
+                <p className="text-sm text-gray-600">X-RAY/CT/MRI imaging data</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">

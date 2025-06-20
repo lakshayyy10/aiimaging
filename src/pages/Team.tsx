@@ -23,13 +23,6 @@ const Team = () => {
   ────────────────────────────── */
   const mentors = [
     {
-      name: 'Dr Srinath Kamineni',
-      title: 'Associate Professor of Orthopaedic Surgery',
-      image: '', // add later
-      linkedin: '#',
-      bio: ''    // will fill later
-    },
-    {
       name: 'Dr Parth Desai',
       title: 'Founder & CEO, Implant Identifier',
       image: '',
@@ -209,7 +202,7 @@ const Team = () => {
     {/* NEC Software Solutions */}
     <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
       <img
-        src="https://via.placeholder.com/150"
+        src="https://www.necsws.com/wp-content/themes/nec/NEC/img/NEC_SWS_Lockup.svg"
         alt="NEC Software Solutions"
         className="w-24 h-24 object-contain mb-4"
       />
@@ -229,7 +222,7 @@ const Team = () => {
     {/* SRM Institute */}
     <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
       <img
-        src="https://via.placeholder.com/150"
+        src="https://d23qowwaqkh3fj.cloudfront.net/wp-content/uploads/2022/01/srm-logo-white.svg.gzip"
         alt="SRM Institute"
         className="w-24 h-24 object-contain mb-4"
       />
@@ -249,7 +242,7 @@ const Team = () => {
     {/* Implant Identifier */}
     <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
       <img
-        src="https://via.placeholder.com/150"
+        src="https://implantidentifier.app/assets/img/logo.png"
         alt="Implant Identifier"
         className="w-24 h-24 object-contain mb-4"
       />
@@ -257,7 +250,7 @@ const Team = () => {
         Implant Identifier App
       </h3>
       <a
-        href="https://www.implantidentifier.com"
+        href="https://implantidentifier.app/"
         target="_blank"
         rel="noopener noreferrer"
         className="text-primary-600 hover:underline"
