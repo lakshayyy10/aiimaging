@@ -36,20 +36,6 @@ const Team = () => {
   ────────────────────────────── */
   const technicalAdvisors = [
     {
-      name: 'Richard Armstrong',
-      title: 'Head of Registries, NEC Software Solutions',
-      image: '',
-      linkedin: '#',
-      bio: ''
-    },
-    {
-      name: 'Prof Bhushan Borotikar',
-      title: 'Head, Symbiosis Centre for Medical Image Analysis',
-      image: '',
-      linkedin: '#',
-      bio: ''
-    },
-    {
       name: 'Prof Malathy',
       title: 'Professor, Networking & Communications',
       image: '',
@@ -71,8 +57,7 @@ const Team = () => {
   const coreTeam = [
     { name: 'Kiruthika M', title: 'Research Associate', image: '', linkedin: '#', bio: '' },
     { name: 'Auxilia',     title: 'Data Curator',      image: '', linkedin: '#', bio: '' },
-    { name: 'Mohit',       title: 'Post‑doctoral Fellow', image: '', linkedin: '#', bio: '' },
-    { name: 'Soumya',      title: 'Core Team',         image: '', linkedin: '#', bio: '' },
+    { name: 'Soumya',      title: 'Technical Director',         image: '', linkedin: '#', bio: '' },
     { name: 'Ramanathan',  title: 'Core Team',         image: '', linkedin: '#', bio: '' }
   ];
 
