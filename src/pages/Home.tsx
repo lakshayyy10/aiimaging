@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, Shield, Zap, Users, CheckCircle, Brain, Scan, Target } from 'lucide-react';
 
@@ -26,6 +26,21 @@ const Home = () => {
     }
   ];
 
+  const images = [
+    'public/slide1.png',
+    'public/slide2.png',
+    'public/slide3.png'
+  ];
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // Change image every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
+  
   const clients = [
     "General Hospital",
     "Medical Research Center",
@@ -102,71 +117,36 @@ const Home = () => {
 
       {/* Overview of Needs */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Why Implant Identification Matters
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Accurate implant identification is critical for successful revision surgeries, especially for glenoid and orthopedic implants where precision determines patient outcomes.
-            </p>
-          </div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      {/* Benefits on the Left */}
+      <div>
+        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+          Transforming Clinical Outcomes
+        </h2>
+        <ul className="space-y-4">
+          {benefits.map((benefit, index) => (
+            <li key={index} className="flex items-start">
+              <CheckCircle className="w-6 h-6 text-emerald-500 mt-1 mr-3 flex-shrink-0" />
+              <p className="text-lg text-gray-700">{benefit}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-xl border border-red-100">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Current Challenges</h3>
-                <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                    Manual identification is time-consuming and error-prone
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                    Limited accuracy in complex cases
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                    Inconsistent results across different radiologists
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                    Delayed surgical planning and patient care
-                  </li>
-                </ul>
-              </div>
+      {/* Image Carousel on the Right */}
+      <div className="relative w-full h-100 rounded-xl overflow-hidden shadow-lg">
+        <img
+          src={images[currentImageIndex]}
+          alt="AI Visualization"
+          className="w-full h-full object-cover transition-opacity duration-700"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
-              <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded-xl border border-emerald-100">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Our Impact</h3>
-                <ul className="space-y-2 text-gray-600">
-                  {benefits.map((benefit, index) => (
-                    <li key={index} className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0" />
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-primary-50 to-emerald-50 p-8 rounded-2xl">
-              <div className="aspect-square bg-white rounded-xl shadow-lg p-8 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Scan className="w-10 h-10 text-white" />
-                  </div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                    Advanced AI Analysis
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Our AI algorithms process medical imaging data to provide accurate implant identification and geometric analysis.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Our Solution */}
       <section className="py-20 bg-gray-50">
