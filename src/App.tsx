@@ -4,7 +4,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home.tsx';
 import Team from './pages/Team.tsx';
-import ImplantIdentification from './pages/ImplantIdentification.tsx'
+import ImplantIdentification from './pages/ImplantIdentification.tsx';
+import Publications from './pages/Publications.tsx'; // 👈 Import the Publications page
 
 function App() {
   return (
@@ -16,9 +17,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/team" element={<Team />} />
             <Route path="/implant-identification" element={<ImplantIdentification />} />
-{/*<Route path="/research" element={<Research />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />*/}
+            <Route path="/research" element={<Publications />} /> {/* 👈 Route added here */}
+            {/* <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} /> */}
           </Routes>
         </main>
         <Footer />
