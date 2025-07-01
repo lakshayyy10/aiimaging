@@ -6,7 +6,7 @@ import Home from './pages/Home.tsx';
 import Team from './pages/Team.tsx';
 import ImplantIdentification from './pages/ImplantIdentification.tsx';
 import Publications from './pages/Publications.tsx';
-import XrayLibrary from './pages/Xraylibrary.tsx'
+import XrayLibrary from './pages/XrayLibrary.tsx'
 import Shoulder from './pages/Shoulder.tsx';
 
 
@@ -24,6 +24,7 @@ function App() {
   <Route path="/implant-identification" element={<ImplantIdentification />} />
   <Route path="/implant-identification/xray" element={<XrayLibrary />} />
   <Route path="/research" element={<Publications />} />
+  <Route path="/xray-library" element={<XrayLibrary />} />
   <Route path="/xray/shoulder" element={<Shoulder />} />
 
 </Routes>
