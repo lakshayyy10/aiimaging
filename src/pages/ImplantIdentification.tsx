@@ -1,11 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const ImplantIdentification: React.FC = () => {
+  const navigate = useNavigate();
+
   const handleNavigate = (section: 'xray' | 'ct') => {
-    console.log(`Navigating to ${section} section`);
-    // Add your navigation logic here
-    // For example: navigate(`/implant-identification/${section}`);
+    if (section === 'xray') {
+      navigate('/xray-library');
+    } else if (section === 'ct') {
+      navigate('/ct-library');
+    }
   };
 
   return (
