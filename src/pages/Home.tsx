@@ -422,7 +422,7 @@ const Home = () => {
                    playsInline
                    controls
                               >
-                  <source src="../../public/WhatsApp Video 2025-07-01 at 10.37.15.mp4" type="video/mp4" />
+                  <source src="./into.mp4" type="video/mp4" />
                            Your browser does not support the video tag.
                   </video>
                </div>
