@@ -412,42 +412,21 @@ const Home = () => {
             </div>
 
             {/* Video Player on the Right with 3D Animation */}
-            <div className="relative w-full h-96 rounded-xl overflow-hidden shadow-lg transform-gpu">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-emerald-500/10 animate-pulse"></div>
-              
-              {/* 3D Rotating Frame */}
-              <div className="absolute inset-2 bg-white rounded-lg shadow-inner transform animate-rotate-y">
-                <video
-                  className="w-full h-full object-cover rounded-lg transition-all duration-700 transform hover:scale-105"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                >
+{/* Simplified Video Player */}
+             <div className="w-full rounded-xl overflow-hidden shadow-lg">
+                   <video
+                   className="w-full h-auto object-contain rounded-xl"
+                   autoPlay
+                   loop
+                   muted
+                   playsInline
+                   controls
+                              >
                   <source src="../../public/WhatsApp Video 2025-07-01 at 10.37.15.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                
-                {/* Data Flow Overlay */}
-                <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute top-4 left-4 w-2 h-2 bg-blue-500 rounded-full animate-ping"></div>
-                  <div className="absolute top-8 right-8 w-3 h-3 bg-emerald-500 rounded-full animate-bounce"></div>
-                  <div className="absolute bottom-6 left-6 w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                  <div className="absolute bottom-4 right-4 w-4 h-4 bg-orange-500 rounded-full animate-spin"></div>
-                  
-                  {/* Scanning Line Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent transform translate-x-[-100%] animate-scan"></div>
-                </div>
-              </div>
-              
-              {/* Floating Analysis Indicators */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center animate-float shadow-lg">
-                <Eye className="w-4 h-4 text-white" />
-              </div>
-              <div className="absolute -bottom-4 -left-4 w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center animate-pulse shadow-lg">
-                <Cpu className="w-5 h-5 text-white" />
-              </div>
-            </div>
+                           Your browser does not support the video tag.
+                  </video>
+               </div>
+
           </div>
         </div>
       </section>
