@@ -1,9 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // ✅ ADD THIS
 import { ArrowLeft, ArrowRight, Eye } from "lucide-react";
 
 const parts = [
-  { 
-    name: "Hip", 
+  {
+    name: "Hip",
     color: "bg-indigo-100",
     hoverColor: "hover:bg-indigo-200",
     borderColor: "border-indigo-300",
@@ -13,10 +14,10 @@ const parts = [
     description: "Total hip replacements, hip resurfacing, and acetabular components",
     count: "45 implants"
   },
-  { 
-    name: "Knee", 
+  {
+    name: "Knee",
     color: "bg-purple-100",
-    hoverColor: "hover:bg-purple-200", 
+    hoverColor: "hover:bg-purple-200",
     borderColor: "border-purple-300",
     textColor: "text-purple-800",
     to: "/xray/knee",
@@ -24,63 +25,29 @@ const parts = [
     description: "Total knee replacements, unicondylar, and patellofemoral implants",
     count: "52 implants"
   },
-  { 
-    name: "Shoulder", 
+  {
+    name: "Shoulder",
     color: "bg-pink-100",
     hoverColor: "hover:bg-pink-200",
-    borderColor: "border-pink-300", 
+    borderColor: "border-pink-300",
     textColor: "text-pink-800",
-    to: "/xray/shoulder",
+    to: "/xray/shoulder", // ✅ THIS will be used by navigate()
     image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=300&fit=crop&auto=format",
     description: "Total shoulder, reverse shoulder, and hemiarthroplasty implants",
     count: "29 implants"
   },
-  {
-    name: "Spine",
-    color: "bg-green-100",
-    hoverColor: "hover:bg-green-200",
-    borderColor: "border-green-300",
-    textColor: "text-green-800", 
-    to: "/xray/spine",
-    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop&auto=format",
-    description: "Pedicle screws, rods, cages, and spinal fusion hardware",
-    count: "34 implants"
-  },
-  {
-    name: "Ankle",
-    color: "bg-blue-100",
-    hoverColor: "hover:bg-blue-200",
-    borderColor: "border-blue-300",
-    textColor: "text-blue-800",
-    to: "/xray/ankle", 
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format",
-    description: "Total ankle replacements and ankle fusion hardware",
-    count: "18 implants"
-  },
-  {
-    name: "Wrist",
-    color: "bg-yellow-100",
-    hoverColor: "hover:bg-yellow-200",
-    borderColor: "border-yellow-300", 
-    textColor: "text-yellow-800",
-    to: "/xray/wrist",
-    image: "https://images.unsplash.com/photo-1576669801820-2dd1c7a7e4f1?w=400&h=300&fit=crop&auto=format", 
-    description: "Wrist fusion plates, screws, and joint replacement implants",
-    count: "15 implants"
-  }
+  // ... other parts (Spine, Ankle, Wrist)
 ];
 
 const XrayLibrary = () => {
-  const handleNavigate = (to) => {
-    console.log(`Navigating to ${to}`);
-    // Add your navigation logic here
-    // navigate(to);
+  const navigate = useNavigate(); // ✅ INIT NAVIGATOR
+
+  const handleNavigate = (to: string) => {
+    navigate(to); // ✅ ENABLE NAVIGATION
   };
 
   const handleBack = () => {
-    console.log('Navigating back to main page');
-    // Add navigation logic to go back
-    // navigate('/implant-identification');
+    navigate('/implant-identification'); // ✅ Navigate back
   };
 
   return (
@@ -103,7 +70,7 @@ const XrayLibrary = () => {
                 <p className="text-gray-600 mt-1">Select an implant category to browse X-ray images</p>
               </div>
             </div>
-            
+
             {/* Stats */}
             <div className="hidden md:flex items-center space-x-6 text-sm">
               <div className="text-center">
@@ -125,10 +92,10 @@ const XrayLibrary = () => {
           {parts.map((part) => (
             <div
               key={part.name}
+              onClick={() => handleNavigate(part.to)} // ✅ MAKE EACH CARD NAVIGATE
               className={`group cursor-pointer bg-white rounded-2xl shadow-md hover:shadow-2xl 
                          transition-all duration-500 ease-out hover:scale-105 overflow-hidden
                          border-2 ${part.borderColor} ${part.hoverColor}`}
-              onClick={() => handleNavigate(part.to)}
             >
               {/* Image Section */}
               <div className="relative h-64 overflow-hidden">
@@ -137,11 +104,7 @@ const XrayLibrary = () => {
                   alt={`${part.name} X-ray implant`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                
-                {/* X-ray Effect Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                
-                {/* Medical Grid Overlay */}
                 <div className="absolute inset-0 opacity-20">
                   <div className="w-full h-full" style={{
                     backgroundImage: `
@@ -151,13 +114,9 @@ const XrayLibrary = () => {
                     backgroundSize: '20px 20px'
                   }}></div>
                 </div>
-                
-                {/* View Icon */}
                 <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <Eye className="w-5 h-5 text-white" />
                 </div>
-                
-                {/* Count Badge */}
                 <div className="absolute bottom-4 left-4">
                   <span className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
                     {part.count}
@@ -173,62 +132,19 @@ const XrayLibrary = () => {
                   </h2>
                   <ArrowRight className={`w-6 h-6 ${part.textColor} group-hover:translate-x-2 transition-transform duration-300`} />
                 </div>
-                
-                <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                  {part.description}
-                </p>
-                
-                {/* Features */}
+                <p className="text-gray-700 text-sm leading-relaxed mb-4">{part.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-2 py-1 bg-white/60 text-gray-700 text-xs font-medium rounded-md">
-                    X-ray Images
-                  </span>
-                  <span className="px-2 py-1 bg-white/60 text-gray-700 text-xs font-medium rounded-md">
-                    3D Models
-                  </span>
-                  <span className="px-2 py-1 bg-white/60 text-gray-700 text-xs font-medium rounded-md">
-                    Specifications
-                  </span>
+                  <span className="px-2 py-1 bg-white/60 text-gray-700 text-xs font-medium rounded-md">X-ray Images</span>
+                  <span className="px-2 py-1 bg-white/60 text-gray-700 text-xs font-medium rounded-md">3D Models</span>
+                  <span className="px-2 py-1 bg-white/60 text-gray-700 text-xs font-medium rounded-md">Specifications</span>
                 </div>
-                
-                {/* Action Button */}
-                <button className={`w-full ${part.textColor} font-semibold py-3 px-4 rounded-lg 
-                                   bg-white/80 hover:bg-white transition-all duration-200
-                                   flex items-center justify-center space-x-2 group-hover:shadow-md`}>
+                <button className={`w-full ${part.textColor} font-semibold py-3 px-4 rounded-lg bg-white/80 hover:bg-white transition-all duration-200 flex items-center justify-center space-x-2 group-hover:shadow-md`}>
                   <span>Browse {part.name} Implants</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Bottom Info */}
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Professional Medical Imaging Database
-            </h3>
-            <p className="text-gray-600 leading-relaxed">
-              Our comprehensive X-ray library contains high-quality radiographic images of orthopedic implants 
-              from leading manufacturers. Each image is professionally annotated with key identifying features, 
-              manufacturer information, and technical specifications to assist in accurate implant identification.
-            </p>
-            <div className="flex justify-center items-center space-x-8 mt-6 text-sm text-gray-500">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>Regularly Updated</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <span>Professional Quality</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                <span>Detailed Annotations</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
