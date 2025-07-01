@@ -54,27 +54,12 @@ const Home = () => {
     }
   ];
 
-  const images = [
-    '../../public/slide1.png',
-    'https://via.placeholder.com/600x400/10B981/FFFFFF?text=CT+Scan+Processing',
-    'https://via.placeholder.com/600x400/8B5CF6/FFFFFF?text=MRI+Detection'
-  ];
-  
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
   // Animation state for the cycling text
   const imagingTypes = ["X-RAY", "CT SCAN", "MRI"];
   const [currentTypeIndex, setCurrentTypeIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [typeSpeed, setTypeSpeed] = useState(150);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   // Typewriter effect for imaging types
   useEffect(() => {
@@ -426,17 +411,22 @@ const Home = () => {
               </ul>
             </div>
 
-            {/* Image Carousel on the Right with 3D Animation */}
+            {/* Video Player on the Right with 3D Animation */}
             <div className="relative w-full h-96 rounded-xl overflow-hidden shadow-lg transform-gpu">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-emerald-500/10 animate-pulse"></div>
               
               {/* 3D Rotating Frame */}
               <div className="absolute inset-2 bg-white rounded-lg shadow-inner transform animate-rotate-y">
-                <img
-                  src={images[currentImageIndex]}
-                  alt="AI Visualization"
+                <video
                   className="w-full h-full object-cover rounded-lg transition-all duration-700 transform hover:scale-105"
-                />
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src="../../public/WhatsApp Video 2025-07-01 at 10.37.15.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
                 
                 {/* Data Flow Overlay */}
                 <div className="absolute inset-0 pointer-events-none">
@@ -578,7 +568,7 @@ const Home = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {clients.map((client, index) => (
               <div key={index} className="bg-gray-50 p-6 rounded-lg text-center hover:bg-gray-100 transition-colors duration-200">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mx-auto mb-3">
                   <Users className="w-6 h-6 text-white" />
                 </div>
                 <p className="text-sm font-medium text-gray-900">{client}</p>
