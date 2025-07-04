@@ -47,6 +47,12 @@ const Team = () => {
     { name: 'Ramanathan', title: 'Core Team', image: '', linkedin: '#', bio: '' }
   ];
 
+  const interns = [
+    { name: 'Lakshay Chhabra', title: 'Intern', image: '', linkedin: '#', bio: '' },
+    { name: 'Priyansh Sonthalia', title: 'Intern', image: '', linkedin: '#', bio: '' },
+    { name: 'Abhinav', title: 'Intern', image: '', linkedin: '#', bio: '' }
+  ];
+
   const TeamCard = ({ member, showEmail = false }) => (
     <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
       <div className="p-6 flex flex-col items-center text-center">
@@ -134,6 +140,16 @@ const Team = () => {
           <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
             {coreTeam.map((c, i) => (
               <TeamCard key={i} member={c} />
+            ))}
+          </div>
+        </section>
+         <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Interns</h2>
+          </div>
+          <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+            {interns.map((intern, i) => (
+              <TeamCard key={i} member={intern} />
             ))}
           </div>
         </section>
