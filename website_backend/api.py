@@ -38,4 +38,8 @@ async def predict(file: UploadFile = File(...)):
         "prediction": CLASS_NAMES[pred_index],
         "confidence": round(confidence, 4)
     }
+@app.get("/")
+def read_root():
+    return {"status": "API is running"}
+
 
