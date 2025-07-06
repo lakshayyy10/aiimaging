@@ -8,6 +8,7 @@ import ImplantIdentification from './pages/ImplantIdentification.tsx';
 import Publications from './pages/Publications.tsx';
 import XrayLibrary from './pages/XrayLibrary.tsx'
 import Shoulder from './pages/Shoulder.tsx';
+import Hip from './pages/Hip.tsx';
 
 
 
@@ -26,6 +27,7 @@ function App() {
   <Route path="/research" element={<Publications />} />
   <Route path="/xray-library" element={<XrayLibrary />} />
   <Route path="/xray/shoulder" element={<Shoulder />} />
+  <Route path="/xray/hip" element={<Hip />} />
 
 </Routes>
 
