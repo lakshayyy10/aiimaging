@@ -8,14 +8,18 @@ from model import get_model, preprocess_image, CLASS_NAMES
 
 app = FastAPI()
 
-# Enable CORS so React can access the API
+# Enable CORS so React can access the api
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # replace "*" with frontend domain in production
+    allow_origins=[
+        "http://localhost:5173",               # For local dev
+        "https://lakshayy10.github.io",       # Your GitHub Pages
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Load model
 model = get_model(num_classes=len(CLASS_NAMES))
