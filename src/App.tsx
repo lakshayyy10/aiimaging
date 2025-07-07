@@ -15,7 +15,7 @@ import Hip from './pages/Hip.tsx';
 
 function App() {
   return (
-    <Router>
+    <Router basename="aiimaging/">
       <div className="min-h-screen bg-gray-50 font-inter">
         <Header />
         <main>
