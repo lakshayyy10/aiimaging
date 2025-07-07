@@ -14,8 +14,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",               # Local development
-        "https://lakshayy10.github.io",        # GitHub Pages domain
-        "https://aiimaging-1.onrender.com",    # Render domain (your API domain)
+        "https://lakshayy10.github.io",        # GitHub Pages domain   # Render domain (your API domain)
         "*"                                    # Allow all origins temporarily for debugging
     ],
     allow_credentials=False,  # Set to False when using "*" origin
