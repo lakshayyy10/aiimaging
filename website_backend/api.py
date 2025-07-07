@@ -4,21 +4,20 @@ from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import torch
 import io
+import re
 from model import get_model, preprocess_image, CLASS_NAMES
 
 app = FastAPI()
 
-# Enable CORS so React can access the api
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",               # For local dev
-        "https://lakshayy10.github.io",       # Your GitHub Pages
-    ],
+    allow_origin_regex=".*",  # Allows all origins matching any pattern
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
 
 
 # Load model
