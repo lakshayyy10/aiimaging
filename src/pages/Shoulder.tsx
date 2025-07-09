@@ -13,7 +13,7 @@ const Shoulder = () => {
     formData.append('file', file);
 
     setLoading(true);
-    const res = await fetch('https://aiimaging-1.onrender.com/predict/', {
+    const res = await fetch('https://aiimaging.onrender.com/predict/', {
       method: 'POST',
       body: formData,
     });
