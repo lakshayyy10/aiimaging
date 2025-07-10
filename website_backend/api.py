@@ -71,3 +71,4 @@ async def predict_pytorch(file: UploadFile = File(...)):
 @app.get("/")
 def read_root():
     return {"status": "API is running"}
+#abc
