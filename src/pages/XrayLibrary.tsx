@@ -36,6 +36,18 @@ const parts = [
     description: "Total shoulder, reverse shoulder, and hemiarthroplasty implants",
     count: "29 implants"
   },
+{
+    name: "Wrist",
+    color: "bg-green-100",
+    hoverColor: "hover:bg-green-200",
+    borderColor: "border-green-300",
+    textColor: "text-green-800",
+    to: "/xray/wrist", // ✅ THIS will be used by navigate()
+    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=300&fit=crop&auto=format",
+    description: "wrist implants",
+    count: "11 implants"
+  },
+
   // ... other parts (Spine, Ankle, Wrist)
 ];
 

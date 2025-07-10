@@ -9,6 +9,8 @@ import Publications from './pages/Publications.tsx';
 import XrayLibrary from './pages/XrayLibrary.tsx'
 import Shoulder from './pages/Shoulder.tsx';
 import Hip from './pages/Hip.tsx';
+import Wrist from './pages/Wrist.tsx';
+import WristModel from './pages/wrist-model.tsx'
 
 
 
@@ -28,6 +30,8 @@ function App() {
   <Route path="/xray-library" element={<XrayLibrary />} />
   <Route path="/xray/shoulder" element={<Shoulder />} />
   <Route path="/xray/hip" element={<Hip />} />
+  <Route path="/xray/wrist" element={<Wrist />} />
+  <Route path="/wrist-model" element={<WristModel />} />
 
 </Routes>
 
