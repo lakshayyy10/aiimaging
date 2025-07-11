@@ -15,7 +15,7 @@ const WristModel = () => {
     setLoading(true);
     
     try {
-      const res = await fetch('https://aiimaging.onrender.com/predict/wrist', {
+      const res = await fetch('http://127.0.0.1:8000/predict/wrist', {
         method: 'POST',
         body: formData,
       });
