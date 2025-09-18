@@ -20,7 +20,7 @@ import ShoulderModel from './pages/shoulder-model.tsx'
 
 function App() {
   return (
-    <Router basename="aiimaging/">
+    <Router basename="/">
       <div className="min-h-screen bg-gray-50 font-inter">
         <Header />
         <main>
