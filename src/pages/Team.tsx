@@ -50,7 +50,7 @@ const Team = () => {
   const interns = [
     { name: 'Lakshay Chhabra', title: 'Intern', image: '', linkedin: '#', bio: '' },
     { name: 'Priyansh Sonthalia', title: 'Intern', image: '', linkedin: '#', bio: '' },
-    { name: 'Abhinav', title: 'Intern', image: '', linkedin: '#', bio: '' }
+    { name: 'Abhinav', title: 'Intern', image: '/abhinav.jpg', linkedin: '#', bio: '' }
   ];
 
   const TeamCard = ({ member, showEmail = false }) => (
