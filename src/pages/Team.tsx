@@ -50,7 +50,7 @@ const Team = () => {
   const interns = [
     { name: 'Lakshay Chhabra', title: 'Intern', image: '', linkedin: '#', bio: '' },
     { name: 'Priyansh Sonthalia', title: 'Intern', image: '', linkedin: '#', bio: '' },
-    { name: 'Abhinav', title: 'Intern', image: '/abhinav.jpg', linkedin: '#', bio: '' }
+    { name: 'Abhinav', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-19-at-19.25.51-min-2.jpeg', linkedin: '#', bio: '' }
   ];
 
   const TeamCard = ({ member, showEmail = false }) => (
