@@ -27,27 +27,27 @@ const implantList = [
 ];
 
 const implantImages: Record<string, string> = {
-  "Accumed Polarus": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Arthex Inverse": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Arthex universe": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Biomet Bio-Angular": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Biomet Comprehensive": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Biomet verso": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "DJO Encore Reverse": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "DePuy Global Advantage CTA Head": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Depuy Delta": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Depuy Global": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "EXATECH Equinox": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Evolutis UNIC": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Exatech Interspace": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Stryker O leary": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Stryker solar": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Tornier Aequalis Modular": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Tornier Press Fit": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Zimmer Bigliani": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Zimmer Biomet Sidus": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Zimmer Fenlin total shoulder system": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png",
-  "Smith and Nephew Promos": "https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/shoulder-placeholder.png"
+  "Accumed Polarus": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/polarus-4.png",
+  "Arthex Inverse": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/arthex-inverse-6.png",
+  "Arthex universe": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/universe-4.png",
+  "Biomet Bio-Angular": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/biometbipolar.jpg",
+  "Biomet Comprehensive": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/comprehensive-7.png",
+  "Biomet verso": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/verso-biomet-1.png",
+  "DJO Encore Reverse": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/encorereversexray3.jpg",
+  "DePuy Global Advantage CTA Head": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/depuyglobabladva.jpg",
+  "Depuy Delta": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/depuydelya.png",
+  "Depuy Global": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/depuyglobal.png",
+  "EXATECH Equinox": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/exactechequinoxexray5.png",
+  "Evolutis UNIC": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/evolutis-unic.png",
+  "Exatech Interspace": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/interspace-8.png",
+  "Stryker O leary": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/o-leary-5.png",
+  "Stryker solar": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/strykersolar.jpg",
+  "Tornier Aequalis Modular": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/tornieraequalisxray5.jpg",
+  "Tornier Press Fit": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/pressfit.jpg",
+  "Zimmer Bigliani": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/zimmerbiglianixray250.jpg",
+  "Zimmer Biomet Sidus": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/biomet.png",
+  "Zimmer Fenlin total shoulder system": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/fenlinxray.jpg",
+  "Smith and Nephew Promos": "https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/promos-4.png"
 };
 
 const Shoulder = () => {
