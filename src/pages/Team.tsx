@@ -34,15 +34,15 @@ const Team = () => {
     {
       name: 'Ass. Prof Dr Gayathri M',
       title: 'Assistant Professor, Computing Technologies',
-      image: '',
+      image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.15.16.jpeg',
       linkedin: '#',
       bio: ''
     }
   ];
 
   const coreTeam = [
-    { name: 'Kiruthika M', title: 'Research Associate', image: '', linkedin: '#', bio: '' },
-    { name: 'Auxilia', title: 'Data Curator', image: '', linkedin: '#', bio: '' },
+    { name: 'Kiruthika M', title: 'Research Associate', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.35.12.jpeg', linkedin: '#', bio: '' },
+    { name: 'Auxilia', title: 'Data Curator', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.18.03.jpeg', linkedin: '#', bio: '' },
     { name: 'Soumya', title: 'Technical Director', image: '', linkedin: '#', bio: '' },
     { name: 'Ramanathan', title: 'Core Team', image: '', linkedin: '#', bio: '' }
   ];
@@ -50,7 +50,8 @@ const Team = () => {
   const interns = [
     { name: 'Lakshay Chhabra', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-06-18-at-18.36.55.jpeg', linkedin: '#', bio: '' },
     { name: 'Priyansh Sonthalia', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-05-06-at-20.48.32.jpeg', linkedin: '#', bio: '' },
-    { name: 'Abhinav', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-19-at-19.25.51-min-2.jpeg', linkedin: '#', bio: '' }
+    { name: 'Abhinav', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-19-at-19.25.51-min-2.jpeg', linkedin: '#', bio: '' },
+    { name: 'Shreya', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.15.47.jpeg', linkedin: '#', bio: '' }
   ];
 
   const TeamCard = ({ member, showEmail = false }) => (
@@ -110,6 +111,24 @@ const Team = () => {
             <TeamCard member={founder} showEmail />
           </div>
         </section>
+
+        <section className="mb-20">
+  <div className="text-center mb-12">
+    <h2 className="text-3xl font-bold text-gray-900 mb-4">Collaborators</h2>
+  </div>
+  <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+    <TeamCard
+      member={{
+        name: 'Maxim Horwatiz',
+        title: 'Collaborator',
+        image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-19-at-21.23.01.jpeg', 
+        linkedin: '#',
+        bio: ''
+      }}
+    />
+  </div>
+</section>
+
 
         <section className="mb-20">
           <div className="text-center mb-12">
@@ -184,7 +203,7 @@ const Team = () => {
 
             <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
               <img
-                src="https://d23qowwaqkh3fj.cloudfront.net/wp-content/uploads/2022/01/srm-logo-white.svg.gzip"
+                src="https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/d77541e44be753901dc2a9ce403e7f52.jpg"
                 alt="SRM Institute"
                 className="w-24 h-24 object-contain mb-4"
               />

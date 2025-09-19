@@ -3,28 +3,61 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const implantList = [
-  'Stryker Exeter',
-  'Stryker Accolade II',
-  'Smith and Nephew POLAR CUP',
-  'Depuy Trilock',
-  'Depuy SROM',
-  'Depuy Corail',
-  'Depuy Charnley',
-  'Biomet-Arcos',
-  'Biomet - Taperloc',
-  'Biomet - Echo Biometric',
-  'Aesculap Bicontact'
+  {
+    name: 'Stryker Exeter',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/stryker-exeter.png'
+  },
+  {
+    name: 'Stryker Accolade II',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/ap-image-1.jpeg'
+  },
+  {
+    name: 'Smith and Nephew POLAR CUP',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/ap-image-2r.jpeg'
+  },
+  {
+    name: 'Depuy Trilock',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/depuy-trilock.jpg'
+  },
+  {
+    name: 'Depuy SROM',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/depuy-srom.png'
+  },
+  {
+    name: 'Depuy Corail',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/depuy-corail-667.jpg'
+  },
+  {
+    name: 'Depuy Charnley',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/depuy-charnley.png'
+  },
+  {
+    name: 'Biomet-Arcos',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/biomet-arcos-12.2-1.jpeg'
+  },
+  {
+    name: 'Biomet - Taperloc',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/taperloc-2.1l.jpeg'
+  },
+  {
+    name: 'Biomet - Echo Biometric',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/biomet-echo-bimetric.jpeg'
+  },
+  {
+    name: 'Aesculap Bicontact',
+    image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/aesculp-bicontact.png'
+  }
 ];
 
 const Hip = () => {
-  const navigate = useNavigate(); // ✅ Initialize
+  const navigate = useNavigate();
 
   const handleModelNavigation = () => {
     console.log('Launching AI Model...');
-    navigate('/hip-model'); // 👈 Update this route to match your routing structure
+    navigate('/hip-model');
   };
-  
-  const handleCardClick = (implantName) => {
+
+  const handleCardClick = (implantName: string) => {
     console.log(`Navigating to ${implantName}`);
     const implantRoute = implantName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     navigate(`/${implantRoute}`);
@@ -124,29 +157,25 @@ const Hip = () => {
               <div
                 key={index}
                 className="bg-white border-2 border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-blue-300 group"
-                onClick={() => handleCardClick(implant)}
+                onClick={() => handleCardClick(implant.name)}
               >
-                <div className="aspect-square bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl mb-4 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                    <div className="w-8 h-8 bg-blue-600 rounded-sm"></div>
-                  </div>
+                <div className="aspect-square bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl mb-4 flex items-center justify-center overflow-hidden">
+                  <img 
+                    src={implant.image} 
+                    alt={implant.name} 
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  {implant}
+                  {implant.name}
                 </h3>
                 <p className="text-sm text-gray-600 mb-4">
                   View X-rays, specs, and 3D models
                 </p>
                 <div className="flex space-x-2">
-                  <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">
-                    X-ray
-                  </span>
-                  <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">
-                    3D
-                  </span>
-                  <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">
-                    Specs
-                  </span>
+                  <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">X-ray</span>
+                  <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">3D</span>
+                  <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">Specs</span>
                 </div>
               </div>
             ))}
