@@ -1,8 +1,26 @@
+# ======================================================
+# Medical Implant Classifier API — requirements.txt
+# CPU-ONLY SERVER — no version pins to avoid conflicts
+# ======================================================
+
+# Web framework
 fastapi
-uvicorn
+uvicorn[standard]
+python-multipart
+
+# Image handling
+Pillow
+
+# PyTorch CPU-only (smaller install, no CUDA)
+--extra-index-url https://download.pytorch.org/whl/cpu
 torch
 torchvision
-pillow
-python-multipart
+
+# TensorFlow CPU-only (for hip InceptionV3 .h5 model)
+tensorflow-cpu
+
+# Numerical
 numpy
 
+# Utilities
+python-dotenv

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Implant Detect</string>
+    <string name="title_activity_main">Implant Detect</string>
+    <string name="package_name">com.implantdetect.app</string>
+    <string name="custom_url_scheme">com.implantdetect.app</string>
+</resources>
