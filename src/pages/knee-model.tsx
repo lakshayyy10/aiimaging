@@ -48,7 +48,7 @@ const KneeModel = () => {
     setError(null);
     setResult(null);
     try {
-      const res = await fetch('http://127.0.0.1:8000/predict/knee', {
+      const res = await fetch('https://impant.onrender.com/predict/knee', {
         method: 'POST',
         body: formData,
       });

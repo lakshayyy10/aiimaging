@@ -50,7 +50,7 @@ const HipModel = () => {
     setError(null);
     setResult(null);
     try {
-      const res = await fetch('https://impant.onrender.com/predict/knee', {
+      const res = await fetch('https://impant.onrender.com/predict/hip', {
         method: 'POST',
         body: formData,
       });
