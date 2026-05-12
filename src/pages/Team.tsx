@@ -4,7 +4,7 @@ import { Linkedin, Mail, GraduationCap } from 'lucide-react';
 const Team = () => {
   const founder = {
     name: 'Dr. Vineet Batta',
-    title: 'Founder & CEO, Unicorn Medics',
+    title: '',
     image: 'https://balbharatiin.wordpress.com/wp-content/uploads/2025/07/whatsapp-image-2025-07-28-at-10.34.34-am1.jpeg',
     email: 'vineet.batta@unicornmedics.com',
     linkedin: '#',
