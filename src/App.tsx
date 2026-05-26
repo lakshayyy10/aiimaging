@@ -18,6 +18,7 @@ import Thumb from './pages/thumb.tsx';
 import Spine from './pages/spine.tsx';
 import Finger from './pages/finger.tsx';
 import HipModel from './pages/hip-model.tsx'
+import ImplantLibrary from './pages/ImplantLibrary.tsx'
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
   <Route path="/xray/spine" element={<Spine/>} />
   <Route path="/xray/finger" element={<Finger/>} />
   <Route path="hip-model" element={<HipModel />} />
+  <Route path="/implant-library" element={<ImplantLibrary />} />
 </Routes>
 
         </main>

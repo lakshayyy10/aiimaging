@@ -11,6 +11,7 @@ const Header = () => {
     { name: 'Team & Collaboration', href: '/team' },
     { name: 'Research Publications', href: '/research' },
     { name: 'Implant Identification', href: '/implant-identification' },
+    { name: 'Implant Library', href: '/implant-library' },
     { name: 'About', href: '/about' },
     { name: 'Contact Us', href: '/contact' },
   ];
