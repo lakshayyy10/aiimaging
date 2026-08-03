@@ -1,5 +1,5 @@
 import React from "react";
-import { CalendarDays, ExternalLink, FileText } from "lucide-react";
+import { CalendarDays, ExternalLink, FileText, Award } from "lucide-react";
 
 const filters = [
   "All Publications (9)",
@@ -147,6 +147,65 @@ const Publications: React.FC = () => {
             content advancing the field of AI-powered medical imaging and
             implant identification.
           </p>
+        </div>
+
+        {/* Awards & Recognition */}
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-5">
+            <Award className="w-6 h-6 text-red-600" />
+            <h2 className="text-2xl font-bold text-gray-900">Awards &amp; Recognition</h2>
+          </div>
+          <div className="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden grid grid-cols-1 md:grid-cols-5">
+            {/* Certificate preview */}
+            <a
+              href="/certificate.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:col-span-2 block bg-gray-100 p-4 flex items-center justify-center"
+            >
+              <img
+                src="/certificate-preview.png"
+                alt="RCR 2nd Global AI Conference winning certificate"
+                className="w-full max-w-xs rounded-lg shadow-sm ring-1 ring-gray-200"
+                loading="lazy"
+              />
+            </a>
+
+            {/* Details */}
+            <div className="md:col-span-3 p-6 sm:p-8 flex flex-col justify-center">
+              <div className="flex items-center gap-2 text-sm text-red-600 font-semibold mb-2">
+                <Award className="w-4 h-4" />
+                <span>Winner &middot; Pitch Your Idea</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                RCR 2nd Global AI Conference &mdash; Pitch Your Idea Competition
+              </h3>
+              <p className="text-gray-700 text-sm mb-3">
+                Awarded to <span className="font-medium text-gray-900">Vineet Batta</span> for the idea
+                &ldquo;Automated Identification &amp; Analysis of implanted orthopedic prosthesis visible on
+                radiographs using AI&rdquo; &mdash; the research behind this platform.
+              </p>
+              <p className="text-sm text-gray-500 mb-5">
+                Presented by <span className="font-medium text-gray-700">The Royal College of Radiologists</span>.
+              </p>
+
+              <div className="flex items-center justify-between text-sm text-gray-500">
+                <div className="flex items-center gap-1">
+                  <CalendarDays className="w-4 h-4" />
+                  <span>29&ndash;30 June 2026</span>
+                </div>
+                <a
+                  href="/certificate.pdf"
+                  className="flex items-center gap-1 text-blue-600 font-medium hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  View Certificate
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Filter Tabs */}
