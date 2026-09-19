@@ -1,0 +1,93 @@
+# ---------------------------------------------------------------------------
+# Dependencies
+# ---------------------------------------------------------------------------
+node_modules/
+.pnp
+.pnp.js
+jspm_packages/
+
+# ---------------------------------------------------------------------------
+# Build output  (root only — android/ and ios/ have their own .gitignore)
+# ---------------------------------------------------------------------------
+/dist/
+/dist-ssr/
+/build/
+*.local
+
+# ---------------------------------------------------------------------------
+# Environment & secrets
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.keystore
+*.jks
+.netrc
+.npmrc
+
+# ---------------------------------------------------------------------------
+# Python backend
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Trained model weights.
+# NOTE: the three existing files under website_backend/ are ALREADY tracked in
+# git history — these patterns only stop *new* weights being committed. See
+# README/notes on migrating them to Git LFS or external storage.
+*.h5
+*.pth
+*.pt
+*.onnx
+*.tflite
+*.ckpt
+*.safetensors
+
+# ---------------------------------------------------------------------------
+# Logs & caches
+# ---------------------------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+.cache/
+.temp/
+.tmp/
+
+# ---------------------------------------------------------------------------
+# Editors  (root only, so android/.idea stays managed by android/.gitignore)
+# ---------------------------------------------------------------------------
+/.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# ---------------------------------------------------------------------------
+# OS
+# ---------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini

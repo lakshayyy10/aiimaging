@@ -2,3 +2,251 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===========================================================================
+   AIIMAGING design system
+   Tokens live here; Tailwind maps the same values in tailwind.config.js.
+   ---------------------------------------------------------------------------
+   Type scale, spacing rhythm and the button/label systems are defined once and
+   consumed everywhere, so no section invents its own sizing.
+   =========================================================================== */
+
+@layer base {
+  :root {
+    /* Vertical rhythm. One scale, used by <Section> and nothing else. */
+    --section-y: clamp(4.5rem, 3rem + 5.5vw, 8.5rem);
+    --section-y-tight: clamp(3rem, 2.25rem + 3vw, 5rem);
+    --gutter: clamp(1.25rem, 0.5rem + 2.5vw, 2.5rem);
+  }
+
+  * {
+    border-color: theme('colors.line.DEFAULT');
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'cv05' 1, 'ss03' 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headings inherit the display face and optical tracking by default, so no
+     component has to remember to set them. */
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  /* Visible, branded focus ring on every interactive element. */
+  :focus-visible {
+    outline: 2px solid theme('colors.accent.DEFAULT');
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .on-ink :focus-visible {
+    outline-color: theme('colors.accent.300');
+  }
+
+  ::selection {
+    background: theme('colors.accent.100');
+    color: theme('colors.accent.700');
+  }
+
+  img { max-width: 100%; }
+}
+
+@layer components {
+  /* ---- Typography levels ------------------------------------------------ */
+
+  .t-display {
+    @apply font-display font-medium;
+    font-size: clamp(2.75rem, 1.5rem + 4.4vw, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  .t-h1 {
+    @apply font-display font-medium;
+    font-size: clamp(2.25rem, 1.5rem + 2.6vw, 3.75rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+  }
+
+  .t-h2 {
+    @apply font-display font-medium;
+    font-size: clamp(1.875rem, 1.4rem + 1.7vw, 2.875rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+
+  .t-h3 {
+    @apply font-display font-medium;
+    font-size: clamp(1.1875rem, 1.1rem + 0.45vw, 1.4375rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  .t-lead {
+    font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+    line-height: 1.6;
+    @apply text-graphite;
+  }
+
+  .t-body { @apply text-base leading-[1.65] text-graphite; }
+  .t-small { @apply text-sm leading-[1.6] text-graphite-600; }
+
+  /* Mono label — eyebrows, metadata, data readouts. */
+  .t-label {
+    @apply font-mono text-[0.6875rem] font-medium uppercase;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+  }
+
+  /* ---- Button system ---------------------------------------------------- */
+  /* Three variants. Identical height, radius, type and transition. */
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-sans text-sm font-medium;
+    @apply h-11 rounded px-5 whitespace-nowrap;
+    @apply transition-colors duration-200;
+    letter-spacing: -0.005em;
+  }
+  .btn-lg { @apply h-[3.25rem] px-7 text-[0.9375rem]; }
+
+  .btn-primary {
+    @apply bg-accent text-white;
+  }
+  .btn-primary:hover { @apply bg-accent-700; }
+
+  .btn-secondary {
+    @apply bg-transparent text-ink border border-line-strong;
+  }
+  .btn-secondary:hover { @apply bg-paper-100 border-graphite-500; }
+
+  .btn-link {
+    @apply h-auto rounded-none px-0 text-ink;
+    box-shadow: inset 0 -1px 0 theme('colors.line.strong');
+  }
+  .btn-link:hover { box-shadow: inset 0 -1px 0 theme('colors.ink.DEFAULT'); }
+
+  /* Inverted variants for ink sections. */
+  .on-ink .btn-primary { @apply bg-paper-50 text-ink; }
+  .on-ink .btn-primary:hover { @apply bg-white; }
+  .on-ink .btn-secondary { @apply text-paper-50 border-white/25; }
+  .on-ink .btn-secondary:hover { @apply bg-white/10 border-white/40; }
+  .on-ink .btn-link { @apply text-paper-50; box-shadow: inset 0 -1px 0 rgba(255,255,255,0.3); }
+  .on-ink .btn-link:hover { box-shadow: inset 0 -1px 0 #fff; }
+
+  /* An explicit disabled surface, rather than opacity — 40% ink under white
+     text fails contrast and reads as a rendering fault. */
+  .btn:disabled {
+    @apply cursor-not-allowed border border-line bg-paper-200 text-graphite-500;
+  }
+  .btn:disabled:hover { @apply bg-paper-200; }
+  .on-ink .btn:disabled {
+    @apply border-white/10 bg-white/5;
+    color: #6B7688;
+  }
+
+  /* ---- Ink surface ------------------------------------------------------ */
+
+  .on-ink { @apply bg-ink text-paper-50; }
+  .on-ink h1, .on-ink h2, .on-ink h3, .on-ink h4 { @apply text-paper-50; }
+  .on-ink .t-lead, .on-ink .t-body { color: #A7B2C4; }
+  .on-ink .t-small { color: #8B96A8; }
+  .on-ink * { border-color: rgba(255, 255, 255, 0.12); }
+
+  /* ---- Link ------------------------------------------------------------- */
+
+  .link-underline {
+    @apply text-ink transition-colors;
+    box-shadow: inset 0 -1px 0 theme('colors.line.strong');
+  }
+  .link-underline:hover { @apply text-accent; box-shadow: inset 0 -1px 0 theme('colors.accent.DEFAULT'); }
+}
+
+@layer utilities {
+  /* Scroll-reveal primitive. Starts hidden, released by <Reveal>. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal[data-shown='true'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Radiographs read best inverted-dark; this keeps the treatment consistent. */
+  .xray-plate {
+    background-color: #060B16;
+    background-image:
+      linear-gradient(rgba(127, 176, 255, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(127, 176, 255, 0.055) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
+
+@layer utilities {
+  /* Engineering grid. The light-surface counterpart to .xray-plate, for the
+     hero and other sections that need quiet technical texture. */
+  .tech-grid {
+    background-image:
+      linear-gradient(theme('colors.accent.DEFAULT') 1px, transparent 1px),
+      linear-gradient(90deg, theme('colors.accent.DEFAULT') 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.045;
+  }
+
+  /* One soft cobalt wash, used behind the hero visual and nothing else.
+     Blurred so the halo reads outside the plate rather than hiding behind it. */
+  .glow-accent {
+    background: radial-gradient(
+      closest-side,
+      rgba(37, 99, 235, 0.34) 50%,
+      rgba(59, 130, 246, 0.22) 78%,
+      transparent 100%
+    );
+    filter: blur(36px);
+  }
+
+  /* Hairline that fades out — used to close tinted and ink sections. */
+  .rule-accent {
+    background: linear-gradient(
+      90deg,
+      theme('colors.accent.DEFAULT') 0%,
+      theme('colors.line.accent') 28%,
+      transparent 100%
+    );
+  }
+
+  /* Marker bar for a highlighted block (award, result panel). */
+  .edge-accent { box-shadow: inset 2px 0 0 theme('colors.accent.DEFAULT'); }
+
+  /* Cobalt cast over the ink surface, so dark sections are navy not black. */
+  .ink-wash {
+    background-image: radial-gradient(
+      75% 100% at 15% 0%,
+      rgba(37, 99, 235, 0.16) 0%,
+      transparent 60%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

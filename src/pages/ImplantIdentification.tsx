@@ -1,149 +1,164 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import {
+  ButtonLink,
+  Container,
+  Eyebrow,
+  PageHeader,
+  Reveal,
+  Section,
+  SectionHeader,
+} from '../components/ui';
+import { cx } from '../lib/cx';
+import { publishedRegions, totalCatalogued } from '../data/regions';
 
-const ImplantIdentification: React.FC = () => {
-  const navigate = useNavigate();
+const modalities = [
+  {
+    name: 'X-ray',
+    status: 'Available',
+    to: '/xray-library',
+    available: true,
+    description:
+      'Plain radiograph reference library and trained identification models across nine anatomical regions.',
+    image:
+      'https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-13-at-12.48.33-am.jpeg',
+    imageAlt: 'Anteroposterior hip radiograph showing a total hip replacement',
+  },
+  {
+    name: 'CT',
+    status: 'In development',
+    to: '/xray-library',
+    available: false,
+    description:
+      'Cross-sectional analysis for geometric parameter extraction and component positioning. Under active research.',
+    image:
+      'https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-14-at-11.42.53-pm.jpeg',
+    imageAlt: 'Spinal radiograph showing posterior instrumentation',
+  },
+];
 
-  const handleNavigate = (section: 'xray' | 'ct') => {
-    if (section === 'xray') {
-      navigate('/xray-library');
-    } else if (section === 'ct') {
-      navigate('/ct-library');
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
-      {/* Hero Section */}
-      <div className="text-center pt-16 pb-12">
-        <h1 className="text-5xl font-bold text-gray-900 mb-6">
-          Implant Identification System
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Professional medical imaging reference library for accurate implant identification. 
-          Choose your imaging modality to access comprehensive implant databases.
-        </p>
-      </div>
-
-      {/* Main Options */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          
-          {/* X-ray Option */}
-          <div 
-            onClick={() => handleNavigate('xray')}
-            className="group cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl 
-                       transition-all duration-500 ease-out hover:scale-105 overflow-hidden
-                       border border-gray-100 hover:border-blue-200"
-          >
-            <div className="relative h-80 bg-gradient-to-br from-gray-900 to-gray-700 overflow-hidden">
-              {/* Medical X-ray Background Pattern */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-8 left-8 w-32 h-32 border-2 border-white rounded-full"></div>
-                <div className="absolute top-16 right-12 w-24 h-24 border border-white rounded-lg rotate-45"></div>
-                <div className="absolute bottom-12 left-16 w-20 h-20 border border-white rounded-full"></div>
-                <div className="absolute bottom-8 right-8 w-16 h-16 border-2 border-white"></div>
-              </div>
-              
-              {/* X-ray Image Simulation */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative">
-                  {/* Hip Joint X-ray Simulation */}
-                  <div className="w-48 h-48 relative">
-                    <div className="absolute inset-0 bg-white opacity-90 rounded-full"></div>
-                    <div className="absolute top-8 left-8 w-32 h-32 bg-gray-300 rounded-full opacity-80"></div>
-                    <div className="absolute top-12 left-12 w-24 h-24 bg-white rounded-full"></div>
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-4 h-20 bg-white rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
-            </div>
-            
-            <div className="p-8">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                  X-ray Library
-                </h2>
-                <ArrowRight className="w-8 h-8 text-blue-600 group-hover:translate-x-2 transition-transform duration-300" />
-              </div>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Access comprehensive X-ray imaging database with 11 specialized implant categories 
-                including hip, knee, shoulder, and more orthopedic devices.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">Hip</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">Knee</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">Shoulder</span>
-                <span className="px-3 py-1 bg-gray-100 text-gray-600 text-sm font-medium rounded-full">+8 more</span>
-              </div>
-            </div>
+const ImplantIdentification = () => (
+  <>
+    <PageHeader
+      eyebrow="Platform"
+      title="Implant identification"
+      lead="A clinical reference library and trained identification models for orthopaedic implants. Choose an imaging modality to begin, or go straight to a region."
+      actions={
+        <>
+          <ButtonLink to="/xray-library">
+            Browse X-ray library
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </ButtonLink>
+          <ButtonLink to="/implant-library" variant="secondary">
+            Implant catalogue
+          </ButtonLink>
+        </>
+      }
+      meta={
+        <dl className="grid grid-cols-2 gap-px bg-line">
+          <div className="bg-white px-6 py-6">
+            <dt className="t-label text-graphite-500">Regions</dt>
+            <dd className="mt-3 font-display text-[2rem] leading-none tracking-[-0.03em] text-accent">
+              {publishedRegions.length}
+            </dd>
           </div>
-
-          {/* CT Scan Option */}
-          <div 
-            onClick={() => handleNavigate('ct')}
-            className="group cursor-pointer bg-white rounded-2xl shadow-lg hover:shadow-2xl 
-                       transition-all duration-500 ease-out hover:scale-105 overflow-hidden
-                       border border-gray-100 hover:border-green-200"
-          >
-            <div className="relative h-80 bg-gradient-to-br from-green-900 to-teal-700 overflow-hidden">
-              {/* Medical CT Background Pattern */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-4 left-4 w-40 h-40 border border-white rounded-full"></div>
-                <div className="absolute top-8 left-8 w-32 h-32 border border-white rounded-full"></div>
-                <div className="absolute top-12 left-12 w-24 h-24 border border-white rounded-full"></div>
-                <div className="absolute top-16 left-16 w-16 h-16 border-2 border-white rounded-full"></div>
-              </div>
-              
-              {/* CT Scan Image Simulation */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative">
-                  {/* CT Cross-section Simulation */}
-                  <div className="w-48 h-48 relative">
-                    <div className="absolute inset-0 bg-white opacity-90 rounded-full"></div>
-                    <div className="absolute top-4 left-4 w-40 h-40 bg-gray-200 rounded-full opacity-80"></div>
-                    <div className="absolute top-8 left-8 w-32 h-32 bg-gray-300 rounded-full opacity-70"></div>
-                    <div className="absolute top-12 left-12 w-24 h-24 bg-white rounded-full"></div>
-                    <div className="absolute top-16 left-16 w-16 h-16 bg-gray-400 rounded-full"></div>
-                    {/* Cross lines */}
-                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gray-400 opacity-50"></div>
-                    <div className="absolute left-1/2 top-0 w-0.5 h-full bg-gray-400 opacity-50"></div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
-            </div>
-            
-            <div className="p-8">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-3xl font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-300">
-                  CT Scan Library
-                </h2>
-                <ArrowRight className="w-8 h-8 text-green-600 group-hover:translate-x-2 transition-transform duration-300" />
-              </div>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                Explore detailed CT scan imaging database featuring high-resolution cross-sectional 
-                views of major joint implants and prosthetic devices.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">Hip</span>
-                <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">Knee</span>
-                <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">Shoulder</span>
-              </div>
-            </div>
+          <div className="bg-white px-6 py-6">
+            <dt className="t-label text-graphite-500">Reference implants</dt>
+            <dd className="mt-3 font-display text-[2rem] leading-none tracking-[-0.03em] text-accent">
+              {totalCatalogued}
+            </dd>
           </div>
+        </dl>
+      }
+    />
+
+    {/* Modalities */}
+    <Section tone="paper">
+      <Container>
+        <Eyebrow>Imaging modality</Eyebrow>
+
+        <div className="mt-10 grid gap-x-10 gap-y-12 md:grid-cols-2">
+          {modalities.map((m, i) => {
+            const Body = (
+              <>
+                <div className="xray-plate aspect-[5/4] overflow-hidden rounded border border-line transition-colors group-hover:border-accent/40">
+                  <img
+                    src={m.image}
+                    alt={m.imageAlt}
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    className={cx(
+                      'h-full w-full object-cover transition-transform duration-700 ease-entrance',
+                      m.available ? 'group-hover:scale-[1.03]' : 'opacity-45'
+                    )}
+                  />
+                </div>
+
+                <div className="mt-6 flex items-baseline justify-between gap-4">
+                  <h2 className="t-h2 transition-colors group-hover:text-accent">{m.name}</h2>
+                  <span
+                    className={cx(
+                      't-label',
+                      m.available ? 'text-accent' : 'text-graphite-500'
+                    )}
+                  >
+                    {m.status}
+                  </span>
+                </div>
+                <p className="t-body mt-4 max-w-prose">{m.description}</p>
+
+                {m.available && (
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-ink">
+                    Open the library
+                    <ArrowRight
+                      aria-hidden
+                      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </span>
+                )}
+              </>
+            );
+
+            return (
+              <Reveal key={m.name} delay={i * 90}>
+                {m.available ? (
+                  <Link to={m.to} className="group block">
+                    {Body}
+                  </Link>
+                ) : (
+                  <div aria-disabled="true">{Body}</div>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
-      </div>
+      </Container>
+    </Section>
 
-      {/* Bottom Info Section */}
-    </div>
-  );
-};
+    {/* Direct region access */}
+    <Section tone="white" bordered size="tight">
+      <Container>
+        <SectionHeader
+          eyebrow="Jump to a region"
+          title="Go directly to the anatomy you are reviewing."
+        />
+        <ul className="mt-10 flex flex-wrap gap-2.5">
+          {publishedRegions.map((r) => (
+            <li key={r.slug}>
+              <Link
+                to={r.path}
+                className="inline-flex items-center gap-2 rounded border border-line px-4 py-2.5 text-sm text-ink transition-colors hover:border-accent/50 hover:bg-tint hover:text-accent"
+              >
+                {r.name}
+                <span className="font-mono text-[0.6875rem] text-graphite-500">
+                  {r.implants.length}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </Section>
+  </>
+);
 
 export default ImplantIdentification;

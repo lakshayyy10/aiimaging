@@ -1,102 +1,101 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Activity, Mail, Linkedin, Instagram, Twitter } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
+import { Container, Wordmark } from './ui';
 
-const Footer = () => {
-  return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-emerald-500 rounded-lg flex items-center justify-center">
-                <Activity className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold">AIIMAGING</span>
-            </div>
-            <p className="text-gray-300 mb-4 max-w-md">
-              Empowering surgeons with AI-based implant identification using advanced CT, MRI, and Edge Radiograph Detection technology.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="mailto:info@aiimaging.com" className="text-gray-400 hover:text-white transition-colors duration-200">
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
+const columns: { title: string; links: { name: string; href: string }[] }[] = [
+  {
+    title: 'Platform',
+    links: [
+      { name: 'Implant identification', href: '/implant-identification' },
+      { name: 'X-ray library', href: '/xray-library' },
+      { name: 'Implant library', href: '/implant-library' },
+    ],
+  },
+  {
+    title: 'Regions',
+    links: [
+      { name: 'Knee', href: '/xray/knee' },
+      { name: 'Hip', href: '/xray/hip' },
+      { name: 'Shoulder', href: '/xray/shoulder' },
+      { name: 'Wrist', href: '/xray/wrist' },
+    ],
+  },
+  {
+    title: 'Organisation',
+    links: [
+      { name: 'Research publications', href: '/research' },
+      { name: 'Team & collaborators', href: '/team' },
+    ],
+  },
+];
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link to="/team" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Team
-                </Link>
-              </li>
-              <li>
-                <Link to="/research" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Research
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/implant-identification" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Implant Identification
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
+const Footer = () => (
+  <footer className="on-ink relative overflow-hidden border-t border-white/10">
+    <div aria-hidden className="rule-accent absolute inset-x-0 top-0 h-px" />
+    <div aria-hidden className="ink-wash pointer-events-none absolute inset-0" />
+    <Container className="relative">
+      <div className="grid gap-x-12 gap-y-14 py-[var(--section-y-tight)] lg:grid-cols-12">
+        {/* Identity */}
+        <div className="lg:col-span-4">
+          <Wordmark tone="paper" />
+          <p className="t-body mt-6 max-w-sm">
+            Automated identification and analysis of orthopaedic implants visible on
+            radiographic images — built with surgeons, validated in peer-reviewed research.
+          </p>
+          <div className="mt-8 flex gap-2">
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="flex h-10 w-10 items-center justify-center rounded border border-white/15 text-[#A7B2C4] transition-colors hover:border-accent-300/60 hover:bg-accent/10 hover:text-accent-300"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+            <a
+              href="mailto:vineet.batta@unicornmedics.com"
+              aria-label="Email AIIMAGING"
+              className="flex h-10 w-10 items-center justify-center rounded border border-white/15 text-[#A7B2C4] transition-colors hover:border-accent-300/60 hover:bg-accent/10 hover:text-accent-300"
+            >
+              <Mail className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
-        {/*<div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © 2024 AIIMAGING. All rights reserved.
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-                Terms of Service
-              </a>
-            </div>
-          </div>
-        </div>*/}
+        {/* Link columns */}
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:col-span-7 lg:col-start-6">
+          {columns.map((col) => (
+            <nav key={col.title} aria-label={col.title}>
+              <h2 className="t-label text-[#7E8A9C]">{col.title}</h2>
+              <ul className="mt-5 space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      className="text-sm text-[#A7B2C4] transition-colors hover:text-accent-300"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
       </div>
-    </footer>
-  );
-};
+
+      {/* Legal */}
+      <div className="flex flex-col gap-4 border-t border-white/10 py-8 sm:flex-row sm:items-center sm:justify-between">
+        <p className="t-small">
+          © {new Date().getFullYear()} AIIMAGING. All rights reserved.
+        </p>
+        <p className="t-small max-w-md sm:text-right">
+          For research and clinical decision support. Final implant verification must be
+          performed by a qualified medical professional.
+        </p>
+      </div>
+    </Container>
+  </footer>
+);
 
 export default Footer;

@@ -1,248 +1,295 @@
-import React from 'react';
-import { Linkedin, Mail, GraduationCap } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
+import {
+  Container,
+  Eyebrow,
+  PageHeader,
+  Reveal,
+  Section,
+  SectionHeader,
+} from '../components/ui';
+import { cx } from '../lib/cx';
 
-const Team = () => {
-  const founder = {
-    name: 'Dr. Vineet Batta',
-    title: '',
-    image: 'https://balbharatiin.wordpress.com/wp-content/uploads/2025/07/whatsapp-image-2025-07-28-at-10.34.34-am1.jpeg',
-    email: 'vineet.batta@unicornmedics.com',
-    linkedin: '#',
-    education:
-      'MBBS • MS (Trauma) • Dip Sports Med • FRCS (Orth) • MD (Ortho Research & Bio Med Eng.)',
-    bio: `Orthopedic surgeon specialising in trauma, hip & knee replacement. Senior Clinical Fellow, Luton & Dunstable University NHS Hospital; Honorary Lecturer, Royal National Orthopaedic Hospital, UCL. Award-winning researcher with >£90k in competitive grants.`
-  };
+type Member = {
+  name: string;
+  title?: string;
+  image?: string;
+  linkedin?: string;
+  email?: string;
+};
 
-  const mentors = [
-    {
-      name: 'Dr Parth Desai',
-      title: 'Founder & CEO, Implant Identifier',
-      image: '',
-      linkedin: '#',
-      bio: ''
-    }
-  ];
+const founder = {
+  name: 'Dr. Vineet Batta',
+  role: 'Founder',
+  image:
+    'https://balbharatiin.wordpress.com/wp-content/uploads/2025/07/whatsapp-image-2025-07-28-at-10.34.34-am1.jpeg',
+  email: 'vineet.batta@unicornmedics.com',
+  education:
+    'MBBS · MS (Trauma) · Dip Sports Med · FRCS (Orth) · MD (Ortho Research & Bio Med Eng.)',
+  bio: 'Orthopaedic surgeon specialising in trauma, hip and knee replacement. Senior Clinical Fellow at Luton & Dunstable University NHS Hospital and Honorary Lecturer at the Royal National Orthopaedic Hospital, UCL. Award-winning researcher with over £90k in competitive grants.',
+};
 
-  const technicalAdvisors = [
-    {
-      name: 'Prof Malathy',
-      title: 'Professor, Networking & Communications',
-      image: '',
-      linkedin: '#',
-      bio: ''
-    },
-    {
-      name: 'Ass. Prof Dr Gayathri M',
-      title: 'Assistant Professor, Computing Technologies',
-      image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.15.16.jpeg',
-      linkedin: '#',
-      bio: ''
-    }
-  ];
-
-  const coreTeam = [
-    { name: 'Kiruthika M', title: 'Research Associate', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.35.12.jpeg', linkedin: '#', bio: '' },
-    { name: 'Auxilia', title: 'Data Curator', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.18.03.jpeg', linkedin: '#', bio: '' },
-    { name: 'Soumya', title: 'Technical Director', image: '', linkedin: '#', bio: '' },
-    { name: 'Ramanathan', title: 'Core Team', image: '', linkedin: '#', bio: '' }
-  ];
-
-  const interns = [
-    { name: 'Lakshay Chhabra', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-06-18-at-18.36.55.jpeg', linkedin: '#', bio: '' },
-    { name: 'Priyansh Sonthalia', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-05-06-at-20.48.32.jpeg', linkedin: '#', bio: '' },
-    { name: 'Abhinav', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-19-at-19.25.51-min-2.jpeg', linkedin: '#', bio: '' },
-    { name: 'Shreya', title: 'Intern', image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.15.47.jpeg', linkedin: '#', bio: '' }
-  ];
-
-  const TeamCard = ({ member, showEmail = false }) => (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-      <div className="p-6 flex flex-col items-center text-center">
-        <div className="w-32 h-32 mb-4 overflow-hidden rounded-full border-4 border-gradient-to-r from-primary-500 to-emerald-500">
-          <img
-            src={member.image || 'https://via.placeholder.com/300'}
-            alt={member.name}
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-        <p className="text-primary-600 font-semibold mb-3">{member.title}</p>
-
-        {member.education && (
-          <div className="flex items-center text-sm text-gray-600 mb-3">
-            <GraduationCap className="w-4 h-4 mr-1" />
-            <span>{member.education}</span>
-          </div>
-        )}
-
-        {member.bio && (
-          <p className="text-gray-600 text-sm mb-4 leading-relaxed">{member.bio}</p>
-        )}
-
-        <div className="flex space-x-3">
-          <a href={member.linkedin} className="p-2 bg-primary-50 text-primary-600 rounded-lg hover:bg-primary-100 transition-colors duration-200">
-            <Linkedin className="w-5 h-5" />
-          </a>
-          {showEmail && member.email && (
-            <a href={`mailto:${member.email}`} className="p-2 bg-emerald-50 text-emerald-600 rounded-lg hover:bg-emerald-100 transition-colors duration-200">
-              <Mail className="w-5 h-5" />
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center mb-16">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Meet Our Team</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Experienced professionals dedicated to innovation in orthopedic surgery, biomedical imaging, and AI.
-          </p>
-        </header>
-
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Founder</h2>
-          </div>
-          <div className="max-w-2xl mx-auto">
-            <TeamCard member={founder} showEmail />
-          </div>
-        </section>
-
-        <section className="mb-20">
-  <div className="text-center mb-12">
-    <h2 className="text-3xl font-bold text-gray-900 mb-4">Collaborators</h2>
-  </div>
-  <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
-    <TeamCard
-      member={{
+const groups: { title: string; members: Member[] }[] = [
+  {
+    title: 'Collaborators',
+    members: [
+      {
         name: 'Maxim Horwatiz',
         title: 'Collaborator',
-        image: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-19-at-21.23.01.jpeg', 
-        linkedin: '#',
-        bio: ''
-      }}
-    />
-  </div>
-</section>
+        image:
+          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-19-at-21.23.01.jpeg',
+      },
+    ],
+  },
+  {
+    title: 'Mentors',
+    members: [{ name: 'Dr Parth Desai', title: 'Founder & CEO, Implant Identifier' }],
+  },
+  {
+    title: 'Technical advisors',
+    members: [
+      { name: 'Prof Malathy', title: 'Professor, Networking & Communications' },
+      {
+        name: 'Asst. Prof Dr Gayathri M',
+        title: 'Assistant Professor, Computing Technologies',
+        image:
+          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.15.16.jpeg',
+      },
+    ],
+  },
+  {
+    title: 'Core team',
+    members: [
+      {
+        name: 'Kiruthika M',
+        title: 'Research Associate',
+        image:
+          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.35.12.jpeg',
+      },
+      {
+        name: 'Auxilia',
+        title: 'Data Curator',
+        image:
+          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.18.03.jpeg',
+      },
+      { name: 'Soumya', title: 'Technical Director' },
+      { name: 'Ramanathan', title: 'Core Team' },
+    ],
+  },
+  {
+    title: 'Interns',
+    members: [
+      {
+        name: 'Lakshay Chhabra',
+        title: 'Intern',
+        image:
+          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-06-18-at-18.36.55.jpeg',
+      },
+      {
+        name: 'Priyansh Sonthalia',
+        title: 'Intern',
+        image:
+          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-05-06-at-20.48.32.jpeg',
+      },
+      {
+        name: 'Abhinav',
+        title: 'Intern',
+        image:
+          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-19-at-19.25.51-min-2.jpeg',
+      },
+      {
+        name: 'Shreya',
+        title: 'Intern',
+        image:
+          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.15.47.jpeg',
+      },
+    ],
+  },
+];
 
+const partners = [
+  {
+    name: 'National Joint Registry / NEC Software Solutions',
+    location: 'United Kingdom',
+    href: 'https://www.necsws.com',
+    logo: 'https://www.necsws.com/wp-content/themes/nec/NEC/img/NEC_SWS_Lockup.svg',
+  },
+  {
+    name: 'SRM Institute of Science and Technology',
+    location: 'Chennai, India',
+    href: 'https://www.srmist.edu.in',
+    logo: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/d77541e44be753901dc2a9ce403e7f52.jpg',
+  },
+  {
+    name: 'Implant Identifier',
+    location: 'Clinical application partner',
+    href: 'https://implantidentifier.app/',
+    logo: 'https://implantidentifier.app/assets/img/logo.png',
+  },
+];
 
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Mentors</h2>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
-            {mentors.map((m, i) => (
-              <TeamCard key={i} member={m} />
-            ))}
-          </div>
-        </section>
+const initials = (name: string) =>
+  name
+    .replace(/^(Dr|Prof|Asst\.?|Ass\.?)\.?\s+/gi, '')
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase();
 
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Technical Advisors</h2>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
-            {technicalAdvisors.map((t, i) => (
-              <TeamCard key={i} member={t} />
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Core Team</h2>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
-            {coreTeam.map((c, i) => (
-              <TeamCard key={i} member={c} />
-            ))}
-          </div>
-        </section>
-         <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Interns</h2>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
-            {interns.map((intern, i) => (
-              <TeamCard key={i} member={intern} />
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Collaborations</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We collaborate with world-class hospitals, universities, and med-tech companies leading the way in orthopedic surgery and biomedical innovation.
-            </p>
-          </div>
-
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-            <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
-              <img
-                src="https://www.necsws.com/wp-content/themes/nec/NEC/img/NEC_SWS_Lockup.svg"
-                alt="NEC Software Solutions"
-                className="w-24 h-24 object-contain mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                National Joint Registry / NEC Software Solutions, UK
-              </h3>
-              <a
-                href="https://www.necsws.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-600 hover:underline"
-              >
-                NEC Software Solutions | Orchestrating a Brighter World
-              </a>
-            </div>
-
-            <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
-              <img
-                src="https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/d77541e44be753901dc2a9ce403e7f52.jpg"
-                alt="SRM Institute"
-                className="w-24 h-24 object-contain mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                SRM Institute of Science and Technology, Chennai
-              </h3>
-              <a
-                href="https://www.srmist.edu.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-600 hover:underline"
-              >
-                SRM Institute of Science & Technology - Learn. Leap. Lead.
-              </a>
-            </div>
-
-            <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center text-center">
-              <img
-                src="https://implantidentifier.app/assets/img/logo.png"
-                alt="Implant Identifier"
-                className="w-24 h-24 object-contain mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                Implant Identifier App
-              </h3>
-              <a
-                href="https://implantidentifier.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-600 hover:underline"
-              >
-                Implant Identifier
-              </a>
-            </div>
-          </div>
-        </section>
-      </div>
+const Portrait = ({ member }: { member: Member }) => (
+  <figure>
+    <div className="aspect-[4/5] overflow-hidden rounded border border-line bg-paper-100">
+      {member.image ? (
+        <img
+          src={member.image}
+          alt={member.name}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover grayscale transition duration-700 ease-entrance hover:scale-[1.03] hover:grayscale-0"
+        />
+      ) : (
+        // Decorative monogram: the name is printed directly beneath it, so it is
+        // hidden from assistive tech rather than announced twice.
+        <div className="flex h-full w-full items-center justify-center bg-tint">
+          <span
+            aria-hidden
+            className="font-display text-3xl tracking-[-0.03em] text-accent/45"
+          >
+            {initials(member.name)}
+          </span>
+        </div>
+      )}
     </div>
-  );
-};
+    <figcaption className="mt-4">
+      <p className="font-display text-[1.0625rem] tracking-[-0.015em]">{member.name}</p>
+      {member.title && <p className="t-small mt-1">{member.title}</p>}
+    </figcaption>
+  </figure>
+);
+
+const Team = () => (
+  <>
+    <PageHeader
+      eyebrow="Organisation"
+      title="Team & collaborators"
+      lead="Orthopaedic surgeons, biomedical engineers and machine learning researchers building implant identification into everyday clinical practice."
+    />
+
+    {/* Founder */}
+    <Section tone="white">
+      <Container>
+        <div className="grid gap-x-16 gap-y-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <div className="aspect-[4/5] overflow-hidden rounded border border-line bg-paper-100">
+              <img
+                src={founder.image}
+                alt={founder.name}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </Reveal>
+
+          <Reveal delay={80} className="lg:col-span-7 lg:col-start-6">
+            <Eyebrow>{founder.role}</Eyebrow>
+            <h2 className="t-h2 mt-5">{founder.name}</h2>
+            <p className="mt-4 text-sm text-graphite-600">{founder.education}</p>
+            <p className="t-lead mt-7 max-w-prose">{founder.bio}</p>
+
+            <div className="mt-9 flex gap-2">
+              <a
+                href={`mailto:${founder.email}`}
+                aria-label={`Email ${founder.name}`}
+                className="flex h-10 w-10 items-center justify-center rounded border border-line text-graphite transition-colors hover:border-graphite-500 hover:text-ink"
+              >
+                <Mail className="h-4 w-4" aria-hidden />
+              </a>
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${founder.name} on LinkedIn`}
+                className="flex h-10 w-10 items-center justify-center rounded border border-line text-graphite transition-colors hover:border-graphite-500 hover:text-ink"
+              >
+                <Linkedin className="h-4 w-4" aria-hidden />
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </Container>
+    </Section>
+
+    {/* Groups */}
+    {groups.map((group, gi) => (
+      <Section
+        key={group.title}
+        tone={gi % 2 === 0 ? 'paper' : 'white'}
+        size="tight"
+        bordered={gi % 2 === 1}
+      >
+        <Container>
+          <div className="grid gap-x-16 gap-y-10 lg:grid-cols-12">
+            <div className="lg:col-span-3">
+              <h2 className="t-h3">{group.title}</h2>
+              <p className="t-label mt-3 text-graphite-500">
+                {group.members.length} {group.members.length === 1 ? 'person' : 'people'}
+              </p>
+            </div>
+
+            <ul
+              className={cx(
+                'grid gap-x-6 gap-y-10 lg:col-span-9',
+                group.members.length === 1
+                  ? 'max-w-[15rem] grid-cols-1'
+                  : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'
+              )}
+            >
+              {group.members.map((m, i) => (
+                <Reveal as="li" key={m.name} delay={i * 60}>
+                  <Portrait member={m} />
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      </Section>
+    ))}
+
+    {/* Partners */}
+    <Section tone="ink" className="relative overflow-hidden">
+      <div aria-hidden className="ink-wash pointer-events-none absolute inset-0" />
+      <Container className="relative">
+        <SectionHeader
+          eyebrow="Institutional partners"
+          title="Built with hospitals, registries and universities."
+          lead="We work with organisations leading orthopaedic surgery and biomedical innovation."
+        />
+
+        <ul className="mt-14 border-t border-white/10">
+          {partners.map((p, i) => (
+            <Reveal as="li" key={p.name} delay={i * 70}>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group grid grid-cols-1 items-center gap-x-8 gap-y-4 border-b border-white/10 py-7 sm:grid-cols-12"
+              >
+                <span className="flex h-14 w-14 items-center justify-center rounded bg-white/95 p-2 sm:col-span-2">
+                  <img src={p.logo} alt="" loading="lazy" className="max-h-full max-w-full object-contain" />
+                </span>
+                <h3 className="t-h3 transition-colors group-hover:text-accent-300 sm:col-span-6">
+                  {p.name}
+                </h3>
+                <p className="t-label text-[#7E8888] sm:col-span-3">{p.location}</p>
+                <span className="t-label text-accent-300 transition-opacity group-hover:opacity-70 sm:col-span-1 sm:text-right">
+                  Visit
+                </span>
+              </a>
+            </Reveal>
+          ))}
+        </ul>
+      </Container>
+    </Section>
+  </>
+);
 
 export default Team;

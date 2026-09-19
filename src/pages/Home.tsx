@@ -1,635 +1,496 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Play, Shield, Zap, Users, CheckCircle, Brain, Scan, Target, Heart, Activity, Stethoscope, Zap as Lightning, Crosshair, Microscope, Monitor, Cpu, Database, Wifi, Radio, Eye } from 'lucide-react';
+import { useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import {
+  Button,
+  ButtonLink,
+  Container,
+  Eyebrow,
+  Reveal,
+  Section,
+  SectionHeader,
+} from '../components/ui';
+import { publishedRegions, totalCatalogued } from '../data/regions';
+
+const outcomes = [
+  {
+    title: 'Faster pre-operative identification',
+    body: 'Recognise the implant in situ before theatre, rather than from incomplete or missing operative records.',
+  },
+  {
+    title: 'Better-prepared revision surgery',
+    body: 'Knowing make and model ahead of time informs instrument selection and reduces intra-operative surprises.',
+  },
+  {
+    title: 'Fewer revision errors',
+    body: 'Component-level identification narrows the possibility of mismatched or unavailable extraction hardware.',
+  },
+  {
+    title: 'Evidence-based decisions',
+    body: 'Every prediction links through to the manufacturer product page, brochure and surgical technique guide.',
+  },
+  {
+    title: 'A consistent clinical workflow',
+    body: 'One reference library across nine anatomical regions, shared between surgeons, registrars and radiology.',
+  },
+];
+
+const capabilities = [
+  {
+    title: 'Deep learning classification',
+    body: 'Convolutional architectures fine-tuned per anatomical region on curated radiographic datasets.',
+  },
+  {
+    title: 'Multi-modal imaging',
+    body: 'Plain radiographs today, with CT and MRI analysis under active development.',
+  },
+  {
+    title: 'Component-level output',
+    body: 'Make, model and ranked alternatives — not just a region or a generic implant class.',
+  },
+  {
+    title: 'Peer-reviewed foundation',
+    body: 'Nine publications across Radiology: AI, Indian Journal of Orthopaedics, IEEE and Springer.',
+  },
+];
+
+const pipeline = [
+  { step: '01', title: 'Acquire', body: 'AP or lateral radiograph, uploaded as JPEG or PNG.' },
+  { step: '02', title: 'Preprocess', body: 'Normalisation, contrast handling and region-of-interest framing.' },
+  { step: '03', title: 'Classify', body: 'Region-specific network returns ranked candidate implants.' },
+  { step: '04', title: 'Resolve', body: 'Make and model with links to manufacturer documentation.' },
+];
+
+const selectedResearch = [
+  {
+    title: 'Automated identification of orthopedic implants on radiographs using deep learning',
+    venue: 'Radiology: Artificial Intelligence',
+    year: '2021',
+  },
+  {
+    title: 'Knee implant identification by fine-tuning deep learning models',
+    venue: 'Indian Journal of Orthopaedics',
+    year: '2021',
+  },
+  {
+    title: 'Harnessing the potential of deep learning for total shoulder implant classification',
+    venue: 'MIUA, Springer',
+    year: '2023',
+  },
+];
+
+const collaborators = [
+  {
+    name: 'National Joint Registry / NEC Software Solutions',
+    href: 'https://www.necsws.com',
+    logo: 'https://www.necsws.com/wp-content/themes/nec/NEC/img/NEC_SWS_Lockup.svg',
+  },
+  {
+    name: 'SRM Institute of Science and Technology',
+    href: 'https://www.srmist.edu.in',
+    logo: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/d77541e44be753901dc2a9ce403e7f52.jpg',
+  },
+  {
+    name: 'Implant Identifier',
+    href: 'https://implantidentifier.app/',
+    logo: 'https://implantidentifier.app/assets/img/logo.png',
+  },
+];
 
 const Home = () => {
- const navigate = useNavigate();
-  const videoRef = useRef<HTMLDivElement | null>(null);
-
-  // Floating medical icons configuration
-//
-//
-//
-   const goToImplantIdentification = () => navigate('/implant-identification');
-  const goToResearch = () => navigate('/research');
-  const scrollToVideo = () => videoRef.current?.scrollIntoView({ behavior: 'smooth' });
-  const floatingIcons = [
-    { Icon: Heart, x: 10, y: 20, delay: 0, color: 'text-red-500' },
-    { Icon: Activity, x: 80, y: 15, delay: 1, color: 'text-blue-500' },
-    { Icon: Stethoscope, x: 20, y: 70, delay: 2, color: 'text-emerald-500' },
-    { Icon: Brain, x: 90, y: 60, delay: 0.5, color: 'text-purple-500' },
-    { Icon: Scan, x: 15, y: 45, delay: 1.5, color: 'text-cyan-500' },
-    { Icon: Monitor, x: 85, y: 35, delay: 2.5, color: 'text-orange-500' },
-    { Icon: Target, x: 60, y: 10, delay: 3, color: 'text-pink-500' },
-    { Icon: Microscope, x: 40, y: 80, delay: 1.2, color: 'text-indigo-500' },
-  ];
-
-  // Data flow particles
-  const [dataParticles, setDataParticles] = useState([]);
-
-  // Generate data flow particles
-  useEffect(() => {
-    const particles = Array.from({ length: 20 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      speed: 0.5 + Math.random() * 1,
-      size: 2 + Math.random() * 4,
-      opacity: 0.3 + Math.random() * 0.7,
-      color: ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#EF4444'][Math.floor(Math.random() * 5)]
-    }));
-    setDataParticles(particles);
-  }, []);
-
-  const features = [
-    {
-      icon: <Brain className="w-8 h-8 text-blue-500" />,
-      title: "AI-Powered Analysis",
-      description: "Advanced machine learning algorithms analyze medical imaging data with unprecedented accuracy."
-    },
-    {
-      icon: <Scan className="w-8 h-8 text-emerald-500" />,
-      title: "Multi-Modal Imaging",
-      description: "Support for CT, MRI, and Edge Radiograph Detection across multiple imaging modalities."
-    },
-    {
-      icon: <Target className="w-8 h-8 text-blue-500" />,
-      title: "Precise Identification",
-      description: "Accurately identify implant types and geometric parameters for patient-specific insights."
-    },
-    {
-      icon: <Shield className="w-8 h-8 text-emerald-500" />,
-      title: "Clinical Validation",
-      description: "Rigorously tested and validated in clinical environments with proven accuracy rates."
-    }
-  ];
-
-  // Animation state for the cycling text
-  const imagingTypes = ["X-RAY", "CT SCAN", "MRI"];
-  const [currentTypeIndex, setCurrentTypeIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [typeSpeed, setTypeSpeed] = useState(150);
-
-  // Typewriter effect for imaging types
-  useEffect(() => {
-    const handleTyping = () => {
-      const currentType = imagingTypes[currentTypeIndex];
-      
-      if (isDeleting) {
-        setDisplayText(currentType.substring(0, displayText.length - 1));
-        setTypeSpeed(75);
-      } else {
-        setDisplayText(currentType.substring(0, displayText.length + 1));
-        setTypeSpeed(150);
-      }
-
-      if (!isDeleting && displayText === currentType) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && displayText === '') {
-        setIsDeleting(false);
-        setCurrentTypeIndex((prevIndex) => (prevIndex + 1) % imagingTypes.length);
-      }
-    };
-
-    const typingTimer = setTimeout(handleTyping, typeSpeed);
-    return () => clearTimeout(typingTimer);
-  }, [displayText, isDeleting, currentTypeIndex, typeSpeed]);
-  
-  const clients = [
-    "General Hospital",
-    "Medical Research Center",
-    "Orthopedic Institute",
-    "University Medical Center",
-    "Surgical Innovation Lab",
-    "Advanced Imaging Center"
-  ];
-
-  const benefits = [
-    "Reduce diagnostic time by up to 75%",
-    "Improve surgical planning accuracy",
-    "Enhance patient safety outcomes",
-    "Streamline clinical workflows",
-    "Support evidence-based decisions"
-  ];
+  const videoRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
-      {/* CSS Animations */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        
-        @keyframes rotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        @keyframes dataFlow {
-          0% { transform: translateX(-20px) translateY(0px); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateX(100vw) translateY(-50px); opacity: 0; }
-        }
-        
-        @keyframes morph1 {
-          0%, 100% { 
-            border-radius: 50% 30% 70% 40%;
-            transform: rotate(0deg) scale(1);
-          }
-          25% { 
-            border-radius: 30% 60% 40% 70%;
-            transform: rotate(90deg) scale(1.1);
-          }
-          50% { 
-            border-radius: 60% 40% 30% 70%;
-            transform: rotate(180deg) scale(0.9);
-          }
-          75% { 
-            border-radius: 40% 70% 60% 30%;
-            transform: rotate(270deg) scale(1.2);
-          }
-        }
-        
-        @keyframes morph2 {
-          0%, 100% { 
-            border-radius: 40% 60% 30% 70%;
-            transform: rotate(0deg) scale(1);
-          }
-          33% { 
-            border-radius: 70% 30% 60% 40%;
-            transform: rotate(120deg) scale(1.3);
-          }
-          66% { 
-            border-radius: 30% 70% 40% 60%;
-            transform: rotate(240deg) scale(0.8);
-          }
-        }
-        
-        @keyframes morph3 {
-          0%, 100% { 
-            border-radius: 60% 40% 80% 20%;
-            transform: rotate(0deg) scale(1);
-          }
-          20% { 
-            border-radius: 20% 80% 40% 60%;
-            transform: rotate(72deg) scale(1.1);
-          }
-          40% { 
-            border-radius: 80% 20% 60% 40%;
-            transform: rotate(144deg) scale(0.9);
-          }
-          60% { 
-            border-radius: 40% 60% 20% 80%;
-            transform: rotate(216deg) scale(1.2);
-          }
-          80% { 
-            border-radius: 60% 40% 80% 20%;
-            transform: rotate(288deg) scale(0.95);
-          }
-        }
+    <>
+      {/* ================= Hero ================= */}
+      <section className="relative overflow-hidden border-b border-line bg-paper">
+        <div aria-hidden className="tech-grid pointer-events-none absolute inset-0" />
+        <Container className="relative">
+          <div className="grid items-center gap-x-16 gap-y-14 pb-[var(--section-y-tight)] pt-16 lg:grid-cols-12 lg:pb-24 lg:pt-24">
+            <div className="lg:col-span-6 xl:col-span-6">
+              <Reveal>
+                <Eyebrow>Orthopaedic imaging AI</Eyebrow>
+              </Reveal>
 
-        @keyframes spin-slow {
-          from { transform: rotate(0deg) scale(1); }
-          to { transform: rotate(360deg) scale(1.1); }
-        }
-        
-        @keyframes spin-reverse {
-          from { transform: rotate(360deg) scale(1); }
-          to { transform: rotate(0deg) scale(0.9); }
-        }
-        
-        @keyframes wobble {
-          0%, 100% { transform: rotate(0deg) scale(1); }
-          25% { transform: rotate(3deg) scale(1.05); }
-          75% { transform: rotate(-3deg) scale(0.95); }
-        }
+              <Reveal delay={60}>
+                <h1 className="t-display mt-6">
+                  Identify the implant on any orthopaedic radiograph.
+                </h1>
+              </Reveal>
 
-        @keyframes rotate-y {
-          0% { transform: perspective(1000px) rotateY(0deg); }
-          100% { transform: perspective(1000px) rotateY(360deg); }
-        }
-        
-        @keyframes scan {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
+              <Reveal delay={120}>
+                <p className="t-lead mt-7 max-w-prose">
+                  AIIMAGING performs patient-specific implant make and model detection from
+                  radiographic imaging — supporting surgical planning, reducing revision
+                  errors and improving clinical outcomes.
+                </p>
+              </Reveal>
 
-        @keyframes dash {
-          0% { stroke-dasharray: 0 100; }
-          100% { stroke-dasharray: 100 0; }
-        }
-        
-        @keyframes dash-reverse {
-          0% { stroke-dasharray: 100 0; }
-          100% { stroke-dasharray: 0 100; }
-        }
-        
-        .animate-morph1 {
-          animation: morph1 8s ease-in-out infinite;
-        }
-        
-        .animate-morph2 {
-          animation: morph2 12s ease-in-out infinite;
-        }
-        
-        .animate-morph3 {
-          animation: morph3 10s ease-in-out infinite;
-        }
-        
-        .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
-        }
-        
-        .animate-spin-reverse {
-          animation: spin-reverse 6s linear infinite;
-        }
-        
-        .animate-float {
-          animation: float 4s ease-in-out infinite;
-        }
-        
-        .animate-wobble {
-          animation: wobble 3s ease-in-out infinite;
-        }
-
-        .animate-rotate-y {
-          animation: rotate-y 10s ease-in-out infinite alternate;
-        }
-        
-        .animate-scan {
-          animation: scan 3s ease-in-out infinite;
-        }
-
-        .animate-dash {
-          stroke-dasharray: 20 10;
-          animation: dash 3s ease-in-out infinite;
-        }
-        
-        .animate-dash-reverse {
-          stroke-dasharray: 20 10;
-          animation: dash-reverse 3s ease-in-out infinite 1.5s;
-        }
-      `}</style>
-
-      {/* Floating Medical Icons Background */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        {floatingIcons.map((item, index) => (
-          <div
-            key={index}
-            className={`absolute ${item.color} opacity-20`}
-            style={{
-              left: `${item.x}%`,
-              top: `${item.y}%`,
-              animation: `float 6s infinite ease-in-out ${item.delay}s, rotate 12s infinite linear`
-            }}
-          >
-            <item.Icon className="w-12 h-12" />
-          </div>
-        ))}
-      </div>
-
-      {/* Data Flow Particles */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        {dataParticles.map((particle) => (
-          <div
-            key={particle.id}
-            className="absolute rounded-full"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              backgroundColor: particle.color,
-              opacity: particle.opacity,
-              animation: `dataFlow 8s infinite linear ${particle.id * 0.5}s`
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Morphing Shapes */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full animate-morph1"></div>
-        <div className="absolute bottom-20 left-20 w-48 h-48 bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 rounded-full animate-morph2"></div>
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-gradient-to-r from-pink-400/20 to-orange-400/20 rounded-full animate-morph3"></div>
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-white to-emerald-50 py-20 lg:py-32 overflow-hidden z-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-emerald-500/5"></div>
-        
-        {/* 3D Rotating Medical Imagery */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-10 transform-gpu">
-            <div className="relative w-24 h-24 animate-spin-slow">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-lg transform rotate-12 animate-pulse"></div>
-              <div className="absolute inset-2 bg-gradient-to-r from-emerald-500/40 to-teal-500/40 rounded-lg transform -rotate-12"></div>
-              <Scan className="absolute inset-0 m-auto w-8 h-8 text-blue-600 animate-bounce" />
+              <Reveal delay={180}>
+                <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <ButtonLink to="/implant-identification" size="lg">
+                    Identify an implant
+                    <ArrowRight className="h-4 w-4" aria-hidden />
+                  </ButtonLink>
+                  <Button
+                    variant="secondary"
+                    size="lg"
+                    onClick={() =>
+                      videoRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                    }
+                  >
+                    Watch the walkthrough
+                  </Button>
+                </div>
+              </Reveal>
             </div>
-          </div>
-          
-          <div className="absolute top-1/3 right-16 transform-gpu">
-            <div className="relative w-20 h-20 animate-spin-reverse">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-full transform scale-110 animate-ping"></div>
-              <div className="absolute inset-1 bg-gradient-to-r from-indigo-500/40 to-purple-500/40 rounded-full"></div>
-              <Brain className="absolute inset-0 m-auto w-6 h-6 text-purple-600" />
-            </div>
-          </div>
-          
-          <div className="absolute bottom-1/4 left-1/4 transform-gpu">
-            <div className="relative w-28 h-28 animate-float">
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-green-500/20 rounded-xl transform rotate-45 animate-pulse"></div>
-              <div className="absolute inset-3 bg-gradient-to-r from-teal-500/30 to-emerald-500/30 rounded-xl transform -rotate-45"></div>
-              <Target className="absolute inset-0 m-auto w-10 h-10 text-emerald-600 animate-pulse" />
-            </div>
-          </div>
-          
-          <div className="absolute bottom-1/3 right-1/4 transform-gpu">
-            <div className="relative w-22 h-22 animate-wobble">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/30 to-red-500/30 rounded-lg transform skew-y-12 animate-pulse"></div>
-              <div className="absolute inset-2 bg-gradient-to-r from-yellow-500/40 to-orange-500/40 rounded-lg transform -skew-y-12"></div>
-              <Heart className="absolute inset-0 m-auto w-7 h-7 text-red-600 animate-pulse" />
-            </div>
-          </div>
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Automated Identification{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">
-               & Analysis of medical Implants visible on radiographic images{' '}
-               <span className="inline-block min-w-[140px] text-left">
-                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">{displayText}</span>
-                 <span className="animate-pulse text-purple-600">|</span>
-               </span>
-            </span>
-          </h1>
-          
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Our system delivers patient-specific implant make and model detection, enhancing surgical planning, reducing revision errors, and improving clinical outcomes.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button 
-onClick={goToImplantIdentification}
-             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
-              Explore Technology
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </button>
-            <button
-onClick={scrollToVideo}
-className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg border-2 border-blue-600 hover:bg-blue-50 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
-              <Play className="mr-2 w-5 h-5" />
-              Request Demo
-            </button>
-          </div>
 
-          {/* Tech Stack Indicators */}
-          <div className="flex justify-center items-center space-x-6 text-sm text-gray-500">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-              <span>X-RAY detection</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
-              <span>CT Imaging</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
-              <span>MRI Analysis</span>
-            </div>
+            {/* Product-truthful visual: a real radiograph with the detection readout */}
+            <Reveal delay={140} className="lg:col-span-6 xl:col-span-5 xl:col-start-8">
+              <div className="relative">
+                <div
+                  aria-hidden
+                  className="glow-accent pointer-events-none absolute -inset-24"
+                />
+              <figure className="xray-plate relative overflow-hidden rounded-lg ring-1 ring-accent/15">
+                <div className="aspect-[4/5] w-full sm:aspect-[5/4] lg:aspect-[4/5]">
+                  <img
+                    src="https://balbharatiin.wordpress.com/wp-content/uploads/2025/09/vanguard-1.png"
+                    alt="Anteroposterior knee radiograph showing a total knee replacement"
+                    className="h-full w-full object-contain p-6 sm:p-10"
+                    width={800}
+                    height={1000}
+                    // @ts-expect-error React 18 forwards the lowercase attribute
+                    fetchpriority="high"
+                  />
+                </div>
+
+                {/* Detection frame */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-[22%] inset-y-[26%] border border-accent-500/45"
+                >
+                  {['-top-px -left-px border-l-2 border-t-2', '-top-px -right-px border-r-2 border-t-2',
+                    '-bottom-px -left-px border-b-2 border-l-2', '-bottom-px -right-px border-b-2 border-r-2'
+                  ].map((pos) => (
+                    <span key={pos} className={`absolute h-4 w-4 border-accent-300 ${pos}`} />
+                  ))}
+                </div>
+
+                <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 border-t border-white/10 bg-ink/85 px-5 py-4 backdrop-blur-sm">
+                  <div>
+                    <p className="t-label text-accent-300">Detected implant</p>
+                    <p className="mt-1.5 font-display text-base text-paper-50">Zimmer Vanguard</p>
+                  </div>
+                  <p className="font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-[#8B96A8]">
+                    Knee · AP view
+                  </p>
+                </figcaption>
+              </figure>
+              </div>
+            </Reveal>
           </div>
+        </Container>
+
+        {/* Spec strip */}
+        <div className="border-t border-line">
+          <Container>
+            <dl className="grid grid-cols-2 gap-px bg-line sm:grid-cols-4">
+              {[
+                { k: 'Modalities', v: 'X-ray · CT · MRI' },
+                { k: 'Regions catalogued', v: `${publishedRegions.length}` },
+                { k: 'Reference implants', v: `${totalCatalogued}+` },
+                { k: 'Publications', v: '9' },
+              ].map((item) => (
+                <div key={item.k} className="bg-paper py-6 pr-6 sm:px-6 sm:first:pl-0">
+                  <dt className="t-label text-graphite-500">{item.k}</dt>
+                  <dd className="mt-2 font-display text-lg tracking-[-0.02em] text-accent">
+                    {item.v}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Container>
         </div>
       </section>
 
-      {/* Overview of Needs */}
-      <section className="py-20 bg-white relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
-            {/* Benefits on the Left */}
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Transforming Clinical Outcomes
-              </h2>
-              <ul className="space-y-4">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-emerald-500 mt-1 mr-3 flex-shrink-0 animate-pulse" />
-                    <p className="text-lg text-gray-700">{benefit}</p>
-                  </li>
+      {/* ================= The problem ================= */}
+      <Section tone="white">
+        <Container>
+          <div className="grid gap-x-16 gap-y-12 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <Reveal>
+                <Eyebrow>The problem</Eyebrow>
+                <h2 className="t-h2 mt-5">
+                  A revision begins with a question nobody can answer.
+                </h2>
+                <p className="t-lead mt-6">
+                  When a patient presents years after their primary procedure, the operative
+                  record is often incomplete, transferred or lost. The radiograph is the only
+                  evidence left — and reading the implant from it is expert, slow and
+                  inconsistent work.
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-6 lg:col-start-7">
+              <ol className="border-t border-line">
+                {outcomes.map((item, i) => (
+                  <Reveal as="li" key={item.title} delay={i * 60}>
+                    <div className="flex gap-6 border-b border-line py-6">
+                      <span className="t-label shrink-0 pt-1 text-accent">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <div>
+                        <h3 className="t-h3">{item.title}</h3>
+                        <p className="t-body mt-2">{item.body}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* ================= Platform + walkthrough ================= */}
+      <Section tone="tint">
+        <Container>
+          <div className="grid gap-x-16 gap-y-12 lg:grid-cols-12">
+            <Reveal className="lg:col-span-7">
+              <div ref={videoRef} className="overflow-hidden rounded-lg border border-line bg-ink">
+                <video
+                  className="block h-auto w-full"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls
+                  preload="metadata"
+                  aria-label="AIIMAGING platform walkthrough"
+                >
+                  <source src="./into.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </Reveal>
+
+            <div className="lg:col-span-5">
+              <Reveal delay={80}>
+                <Eyebrow>The platform</Eyebrow>
+                <h2 className="t-h2 mt-5">Built for the way implants are actually read.</h2>
+              </Reveal>
+
+              <dl className="mt-10 border-t border-line">
+                {capabilities.map((c, i) => (
+                  <Reveal key={c.title} delay={120 + i * 60}>
+                    <div className="border-b border-line py-5">
+                      <dt className="font-display text-base font-medium tracking-[-0.015em]">
+                        {c.title}
+                      </dt>
+                      <dd className="t-small mt-1.5">{c.body}</dd>
+                    </div>
+                  </Reveal>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* ================= Pipeline (ink) ================= */}
+      <Section tone="ink" className="relative overflow-hidden">
+        <div aria-hidden className="ink-wash pointer-events-none absolute inset-0" />
+        <Container className="relative">
+          <Reveal>
+            <SectionHeader
+              eyebrow="How it works"
+              title="From radiograph to component in four steps."
+            />
+          </Reveal>
+
+          <ol className="mt-14 grid border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+            {pipeline.map((s, i) => (
+              <Reveal as="li" key={s.step} delay={i * 80}>
+                <div className="h-full border-b border-white/10 py-8 sm:px-8 sm:first:pl-0 sm:[&:nth-child(2n)]:border-l lg:border-b-0 lg:border-l lg:first:border-l-0 lg:[&:nth-child(2n)]:border-l">
+                  <span className="t-label text-accent-300">{s.step}</span>
+                  <h3 className="t-h3 mt-5">{s.title}</h3>
+                  <p className="t-body mt-2.5">{s.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+        </Container>
+      </Section>
+
+      {/* ================= Coverage ================= */}
+      <Section tone="white" bordered>
+        <Container>
+          <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+            <Reveal>
+              <SectionHeader
+                eyebrow="Coverage"
+                title="Nine anatomical regions, one reference library."
+              />
+            </Reveal>
+            <Reveal delay={80}>
+              <ButtonLink to="/xray-library" variant="secondary" className="shrink-0">
+                Browse the full library
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </ButtonLink>
+            </Reveal>
+          </div>
+
+          <ul className="mt-14 border-t border-line">
+            {publishedRegions.map((region, i) => (
+              <Reveal as="li" key={region.slug} delay={i * 40}>
+                <Link
+                  to={region.path}
+                  className="group grid grid-cols-1 items-baseline gap-x-8 gap-y-2 border-b border-line py-6 transition-colors hover:bg-tint sm:grid-cols-12 sm:py-7"
+                >
+                  <span className="t-label hidden text-accent sm:col-span-1 sm:block">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="t-h3 transition-colors group-hover:text-accent sm:col-span-3">
+                    {region.name}
+                  </h3>
+                  <p className="t-small sm:col-span-5">{region.description}</p>
+                  <span className="t-label text-graphite-500 sm:col-span-2">
+                    {region.implants.length} implants
+                  </span>
+                  <span className="hidden justify-end sm:col-span-1 sm:flex">
+                    <ArrowUpRight
+                      aria-hidden
+                      className="h-5 w-5 text-graphite-500 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                    />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
+      {/* ================= Research ================= */}
+      <Section tone="paper">
+        <Container>
+          <div className="grid gap-x-16 gap-y-14 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <Reveal>
+                <Eyebrow>Evidence</Eyebrow>
+                <h2 className="t-h2 mt-5">The research came first.</h2>
+                <p className="t-lead mt-6">
+                  The methods behind the platform are published and peer-reviewed, developed
+                  with orthopaedic surgeons, radiologists and academic partners.
+                </p>
+                <div className="mt-9">
+                  <ButtonLink to="/research" variant="secondary">
+                    All publications
+                    <ArrowRight className="h-4 w-4" aria-hidden />
+                  </ButtonLink>
+                </div>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-6 lg:col-start-7">
+              <Reveal delay={80}>
+                {/* Award */}
+                <article className="edge-accent rounded-lg border border-line bg-tint p-7">
+                  <p className="t-label text-accent">Winner · Pitch Your Idea</p>
+                  <h3 className="t-h3 mt-4">
+                    RCR 2nd Global AI Conference
+                  </h3>
+                  <p className="t-small mt-3">
+                    Awarded to Vineet Batta for “Automated Identification &amp; Analysis of
+                    implanted orthopedic prosthesis visible on radiographs using AI” —
+                    presented by The Royal College of Radiologists.
+                  </p>
+                </article>
+              </Reveal>
+
+              <ul className="mt-10 border-t border-line">
+                {selectedResearch.map((pub, i) => (
+                  <Reveal as="li" key={pub.title} delay={140 + i * 60}>
+                    <div className="border-b border-line py-5">
+                      <p className="font-display text-[1.0625rem] leading-snug tracking-[-0.015em]">
+                        {pub.title}
+                      </p>
+                      <p className="t-label mt-2.5 text-graphite-500">
+                        {pub.venue} · {pub.year}
+                      </p>
+                    </div>
+                  </Reveal>
                 ))}
               </ul>
             </div>
-
-            {/* Video Player on the Right with 3D Animation */}
-{/* Simplified Video Player */}
-             <div className="w-full rounded-xl overflow-hidden shadow-lg">
-                   <video
-                   className="w-full h-auto object-contain rounded-xl"
-                   autoPlay
-                   loop
-                   muted
-                   playsInline
-                   controls
-                              >
-                  <source src="./into.mp4" type="video/mp4" />
-                           Your browser does not support the video tag.
-                  </video>
-               </div>
-
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* Our Solution */}
-      <section className="py-20 bg-gray-50 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Our AI-Powered Solution
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A comprehensive workflow that transforms medical imaging into actionable surgical insights.
-            </p>
+      {/* ================= Collaborators ================= */}
+      <Section tone="white" size="tight" bordered>
+        <Container>
+          <div className="grid items-center gap-x-16 gap-y-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-3">
+              <p className="t-label text-graphite-500">In collaboration with</p>
+            </Reveal>
+            <Reveal delay={80} className="lg:col-span-9">
+              <ul className="flex flex-wrap items-center gap-x-12 gap-y-8">
+                {collaborators.map((c) => (
+                  <li key={c.name}>
+                    <a
+                      href={c.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-4"
+                    >
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded border border-line bg-white p-1.5">
+                        <img
+                          src={c.logo}
+                          alt=""
+                          loading="lazy"
+                          className="max-h-full max-w-full object-contain"
+                        />
+                      </span>
+                      <span className="max-w-[16rem] text-sm text-graphite transition-colors group-hover:text-ink">
+                        {c.name}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
+        </Container>
+      </Section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 group transform hover:scale-105">
-                <div className="mb-4 transform group-hover:scale-110 transition-transform duration-200">
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Workflow Visualization with Enhanced Animations */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
-            {/* Animated Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-500 to-emerald-500 transform rotate-45 scale-150 animate-pulse"></div>
-            </div>
-            
-            {/* Data Flow Lines */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 200">
-              <defs>
-                <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#3B82F6" stopOpacity="0"/>
-                  <stop offset="50%" stopColor="#10B981" stopOpacity="0.8"/>
-                  <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0"/>
-                </linearGradient>
-              </defs>
-              <path 
-                d="M 100 100 Q 300 50 500 100 T 700 100" 
-                stroke="url(#flowGradient)" 
-                strokeWidth="2" 
-                fill="none"
-                className="animate-dash"
-              />
-              <path 
-                d="M 100 120 Q 300 170 500 120 T 700 120" 
-                stroke="url(#flowGradient)" 
-                strokeWidth="2" 
-                fill="none"
-                className="animate-dash-reverse"
-              />
-            </svg>
-            
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center relative z-10">
-              AI Processing Workflow
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
-              <div className="text-center group relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
-                  <span className="text-white font-bold animate-pulse">1</span>
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Input</h4>
-                <p className="text-sm text-gray-600">X-RAY/CT/MRI imaging data</p>
-                <div className="absolute -top-2 -right-2 w-3 h-3 bg-blue-500 rounded-full animate-bounce opacity-60"></div>
-              </div>
-              <div className="text-center group relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
-                  <span className="text-white font-bold animate-pulse">2</span>
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Preprocessing</h4>
-                <p className="text-sm text-gray-600">Image enhancement & filtering</p>
-                <div className="absolute -top-1 -left-1 w-2 h-2 bg-purple-500 rounded-full animate-ping opacity-60"></div>
-              </div>
-              <div className="text-center group relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
-                  <span className="text-white font-bold animate-pulse">3</span>
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">AI Model</h4>
-                <p className="text-sm text-gray-600">Deep learning analysis</p>
-                <div className="absolute -bottom-2 -right-1 w-4 h-4 bg-emerald-500 rounded-full animate-spin opacity-40"></div>
-              </div>
-              <div className="text-center group relative">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 shadow-lg">
-                  <span className="text-white font-bold animate-pulse">4</span>
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Output</h4>
-                <p className="text-sm text-gray-600">Implant type & geometry</p>
-                <div className="absolute -bottom-1 -left-2 w-3 h-3 bg-orange-500 rounded-full animate-bounce opacity-60"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Clients */}
-      <section className="py-20 bg-white relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Trusted by Leading Institutions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Healthcare providers worldwide rely on our AI technology for accurate implant identification.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {clients.map((client, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg text-center hover:bg-gray-100 transition-colors duration-200">
-                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-6 h-6 text-white" />
-                </div>
-                <p className="text-sm font-medium text-gray-900">{client}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Acknowledgement Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-emerald-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
-            Supported by Excellence
-          </h2>
-          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Our research and development is supported by leading medical institutions and research advisors.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Research Institutions</h3>
-              <p className="text-gray-600">
-                Collaborative partnerships with top-tier medical universities and research centers worldwide.
+      {/* ================= CTA ================= */}
+      <Section tone="ink" className="relative overflow-hidden">
+        <div aria-hidden className="ink-wash pointer-events-none absolute inset-0" />
+        <Container className="relative">
+          <div className="grid gap-x-16 gap-y-10 lg:grid-cols-12 lg:items-end">
+            <Reveal className="lg:col-span-7">
+              <h2 className="t-h1">Bring implant identification into your workflow.</h2>
+            </Reveal>
+            <Reveal delay={80} className="lg:col-span-5">
+              <p className="t-lead">
+                Upload a radiograph and see the platform work, or read the research behind it.
               </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Medical Advisors</h3>
-              <p className="text-gray-600">
-                Expert guidance from leading orthopedic surgeons and radiologists in the field.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Clinical Validation</h3>
-              <p className="text-gray-600">
-                Rigorous testing and validation through clinical trials and real-world applications.
-              </p>
-            </div>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <ButtonLink to="/implant-identification" size="lg">
+                  Identify an implant
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </ButtonLink>
+                <ButtonLink to="/research" variant="secondary" size="lg">
+                  View research
+                </ButtonLink>
+              </div>
+            </Reveal>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Ready to Transform Your Practice?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join the growing number of healthcare providers using AI-powered implant identification to improve patient outcomes.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-onClick={goToImplantIdentification}
-className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200">
-              Get Started Today
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </button>
-            <button 
- onClick={goToResearch}
-className="inline-flex items-center px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-gray-900 transform hover:scale-105 transition-all duration-200">
-              View Research
-            </button>
-          </div>
-        </div>
-      </section>
-    </div>
+        </Container>
+      </Section>
+    </>
   );
 };
 
