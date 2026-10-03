@@ -22,7 +22,8 @@ const founder = {
   role: 'Founder',
   image:
     'https://balbharatiin.wordpress.com/wp-content/uploads/2025/07/whatsapp-image-2025-07-28-at-10.34.34-am1.jpeg',
-  email: 'vineet.batta@unicornmedics.com',
+  email: 'battavineet77@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/vineet-batta-2864934?utm_source=share_via&utm_content=profile&utm_medium=member_ios',
   education:
     'MBBS · MS (Trauma) · Dip Sports Med · FRCS (Orth) · MD (Ortho Research & Bio Med Eng.)',
   bio: 'Orthopaedic surgeon specialising in trauma, hip and knee replacement. Senior Clinical Fellow at Luton & Dunstable University NHS Hospital and Honorary Lecturer at the Royal National Orthopaedic Hospital, UCL. Award-winning researcher with over £90k in competitive grants.',
@@ -30,24 +31,9 @@ const founder = {
 
 const groups: { title: string; members: Member[] }[] = [
   {
-    title: 'Collaborators',
-    members: [
-      {
-        name: 'Maxim Horwatiz',
-        title: 'Collaborator',
-        image:
-          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-19-at-21.23.01.jpeg',
-      },
-    ],
-  },
-  {
-    title: 'Mentors',
-    members: [{ name: 'Dr Parth Desai', title: 'Founder & CEO, Implant Identifier' }],
-  },
-  {
     title: 'Technical advisors',
     members: [
-      { name: 'Prof Malathy', title: 'Professor, Networking & Communications' },
+      { name: 'Dr. Malathy C', title: 'Professor, Networking & Communications', image: `${import.meta.env.BASE_URL}team/dr-malathy-c.png` },
       {
         name: 'Asst. Prof Dr Gayathri M',
         title: 'Assistant Professor, Computing Technologies',
@@ -104,6 +90,101 @@ const groups: { title: string; members: Member[] }[] = [
       },
     ],
   },
+];
+
+const collaborators: { name: string; country: string; role: string; email: string; institution: string; linkedin?: string }[] = [
+  {
+    "name": "Dr Andrew Kurmis",
+    "country": "Australia",
+    "role": "Image Giving Doctor",
+    "email": "andrew_kurmis@hotmail.com",
+    "institution": "A/Professor Andrew Kurmis"
+  },
+  {
+    "name": "Dr Douglas Chonko",
+    "country": "USA",
+    "role": "Image Giving Doctor",
+    "email": "Douglas.Chonko@osumc.edu",
+    "institution": "Ohio State University Wexner Medical Center"
+  },
+  {
+    "name": "Dr Glen Purnomo",
+    "country": "Indonesia",
+    "role": "Image Giving Doctor",
+    "email": "glen.purnomo@yahoo.com",
+    "institution": "Orthopaedic and traumatology"
+  },
+  {
+    "name": "Dr Asep Santoso",
+    "country": "Indonesia",
+    "role": "Image Giving Doctor",
+    "email": "glen.purnomo@yahoo.com",
+    "institution": "OrthoTV"
+  },
+  {
+    "name": "Nguyen Quang Ton Quyen",
+    "country": "Vietnam",
+    "role": "Image Giving Doctor",
+    "email": "glen.purnomo@yahoo.com",
+    "institution": "Bệnh viện Đa khoa Tâm Anh"
+  },
+  {
+    "name": "Gianluca Cusmà Dovico Guatteri M.D",
+    "country": "Bahrain",
+    "role": "Image Giving Doctor",
+    "email": "gcdg@me.com",
+    "institution": "Burjeel, Abu Dhabi"
+  },
+  {
+    "name": "Dr Kartik Varadarajan",
+    "country": "USA",
+    "role": "Senior Collaborator",
+    "email": "mvkartik@gmail.com",
+    "institution": "Kartik Varadarajan"
+  },
+  {
+    "name": "Ryohei Takada",
+    "country": "Japan",
+    "role": "Image Giving Doctor",
+    "email": "",
+    "institution": "Tokyo Medical and Dental University Hospital · Google Scholar"
+  },
+  {
+    "name": "Maxim Horwitz",
+    "country": "London, UK",
+    "role": "Hand implant",
+    "email": "maximhorwitz@gmail.com",
+    "institution": "The Hand Doctor – Orthopaedic Hand and Wrist Surgeon",
+    "linkedin": "https://www.linkedin.com/in/maxim-horwitz-59b38112?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+  },
+  {
+    "name": "Berisha Florent",
+    "country": "Germany",
+    "role": "Finger implants",
+    "email": "Florent.Berisha@klsmartin.com",
+    "institution": "KLS Martin Group"
+  },
+  {
+    "name": "Prof Sashin Ahuja",
+    "country": "UK",
+    "role": "Spine implants (in progress)",
+    "email": "sashinahuja@gmail.com",
+    "institution": "Professor Sashin Ahuja"
+  },
+  {
+    "name": "Manish Gupta",
+    "country": "India",
+    "role": "AIMS Delhi (in progress)",
+    "email": "manishgupta1307@gmail.com",
+    "institution": ""
+  },
+  {
+    "name": "Dr Srinath Kamineni",
+    "country": "",
+    "role": "",
+    "email": "srinathkamineni@gmail.com",
+    "institution": ""
+  }
 ];
 
 const partners = [
@@ -163,6 +244,14 @@ const Portrait = ({ member }: { member: Member }) => (
     <figcaption className="mt-4">
       <p className="font-display text-[1.0625rem] tracking-[-0.015em]">{member.name}</p>
       {member.title && <p className="t-small mt-1">{member.title}</p>}
+      {member.email && (
+        <a href={`mailto:${member.email}`} className="mt-3 block break-all text-sm text-accent hover:underline">{member.email}</a>
+      )}
+      {member.linkedin && (
+        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-2 text-sm text-accent hover:underline">
+          <Linkedin className="h-4 w-4" aria-hidden /> LinkedIn
+        </a>
+      )}
     </figcaption>
   </figure>
 );
@@ -195,7 +284,8 @@ const Team = () => (
             <p className="mt-4 text-sm text-graphite-600">{founder.education}</p>
             <p className="t-lead mt-7 max-w-prose">{founder.bio}</p>
 
-            <div className="mt-9 flex gap-2">
+            <a href={`mailto:${founder.email}`} className="mt-7 inline-block text-sm text-accent hover:underline">{founder.email}</a>
+            <div className="mt-4 flex gap-2">
               <a
                 href={`mailto:${founder.email}`}
                 aria-label={`Email ${founder.name}`}
@@ -204,7 +294,7 @@ const Team = () => (
                 <Mail className="h-4 w-4" aria-hidden />
               </a>
               <a
-                href="https://www.linkedin.com"
+                href={founder.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${founder.name} on LinkedIn`}
@@ -253,6 +343,35 @@ const Team = () => (
         </Container>
       </Section>
     ))}
+
+    <Section tone="white" bordered>
+      <Container>
+        <SectionHeader eyebrow="Collaborators" title="Collaborative list" lead="Clinical contributors and research collaborators supporting our implant imaging work." />
+        <div className="mt-10 overflow-x-auto rounded border border-line">
+          <table className="w-full min-w-[760px] text-left text-sm">
+            <caption className="sr-only">Collaborators, countries, roles and email contacts</caption>
+            <thead className="bg-paper-100">
+              <tr>{['S.No', 'Name', 'Country', 'Role', 'Email'].map((label) => <th key={label} scope="col" className="px-5 py-4 font-semibold">{label}</th>)}</tr>
+            </thead>
+            <tbody>
+              {collaborators.map((person, index) => (
+                <tr key={person.name} className="border-t border-line align-top">
+                  <td className="px-5 py-5 text-graphite-500">{index + 1}</td>
+                  <th scope="row" className="px-5 py-5 font-normal">
+                    <span className="font-medium">{person.name}</span>
+                    {person.institution && <span className="mt-2 block text-xs text-graphite-600">{person.institution}</span>}
+                    {person.linkedin && <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-accent hover:underline">LinkedIn</a>}
+                  </th>
+                  <td className="px-5 py-5">{person.country || '—'}</td>
+                  <td className="px-5 py-5">{person.role || '—'}</td>
+                  <td className="px-5 py-5">{person.email ? <a href={`mailto:${person.email}`} className="text-accent hover:underline">{person.email}</a> : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Container>
+    </Section>
 
     {/* Partners */}
     <Section tone="ink" className="relative overflow-hidden">
