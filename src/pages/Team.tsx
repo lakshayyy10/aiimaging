@@ -92,62 +92,77 @@ const groups: { title: string; members: Member[] }[] = [
   },
 ];
 
-const collaborators: { name: string; country: string; role: string; email: string; institution: string; linkedin?: string }[] = [
+const collaborators: { name: string; country: string; role: string; email: string; institution: string; linkedin?: string; image?: string }[] = [
   {
     "name": "Dr Andrew Kurmis",
     "country": "Australia",
     "role": "Image Giving Doctor",
     "email": "andrew_kurmis@hotmail.com",
-    "institution": "A/Professor Andrew Kurmis"
+    "institution": "A/Professor Andrew Kurmis",
+    "linkedin": "https://www.linkedin.com/in/andrew-kurmis-07206b88/",
+    "image": "team/collaborators/andrew-kurmis-ppt.png"
   },
   {
     "name": "Dr Douglas Chonko",
     "country": "USA",
     "role": "Image Giving Doctor",
     "email": "Douglas.Chonko@osumc.edu",
-    "institution": "Ohio State University Wexner Medical Center"
+    "institution": "Ohio State University Wexner Medical Center",
+    "linkedin": "https://www.linkedin.com/in/douglas-chonko-589a6824/",
+    "image": "team/collaborators/douglas-chonko-ppt.png"
   },
   {
     "name": "Dr Glen Purnomo",
     "country": "Indonesia",
     "role": "Image Giving Doctor",
     "email": "glen.purnomo@yahoo.com",
-    "institution": "Orthopaedic and traumatology"
+    "institution": "Orthopaedic and traumatology",
+    "linkedin": "https://www.linkedin.com/in/glen-purnomo-a2807115a/",
+    "image": "team/collaborators/glen-purnomo-ppt.png"
   },
   {
     "name": "Dr Asep Santoso",
     "country": "Indonesia",
     "role": "Image Giving Doctor",
     "email": "glen.purnomo@yahoo.com",
-    "institution": "OrthoTV"
+    "institution": "OrthoTV",
+    "linkedin": "https://www.linkedin.com/in/asep-santoso-aa524115/",
+    "image": "team/collaborators/asep-santoso-ppt.png"
   },
   {
     "name": "Nguyen Quang Ton Quyen",
     "country": "Vietnam",
     "role": "Image Giving Doctor",
     "email": "glen.purnomo@yahoo.com",
-    "institution": "Bệnh viện Đa khoa Tâm Anh"
+    "institution": "Bệnh viện Đa khoa Tâm Anh",
+    "linkedin": "https://www.linkedin.com/in/drqtnguyen/",
+    "image": "team/collaborators/nguyen-quang-ton-quyen-ppt.png"
   },
   {
     "name": "Gianluca Cusmà Dovico Guatteri M.D",
     "country": "Bahrain",
     "role": "Image Giving Doctor",
     "email": "gcdg@me.com",
-    "institution": "Burjeel, Abu Dhabi"
+    "institution": "Burjeel, Abu Dhabi",
+    "linkedin": "https://www.linkedin.com/in/gianluca-cusm%C3%A0-dovico-guatteri-a2943a40/",
+    "image": "team/collaborators/gianluca-ppt.png"
   },
   {
     "name": "Dr Kartik Varadarajan",
     "country": "USA",
     "role": "Senior Collaborator",
     "email": "mvkartik@gmail.com",
-    "institution": "Kartik Varadarajan"
+    "institution": "Kartik Varadarajan",
+    "linkedin": "https://www.linkedin.com/in/kartikmv/",
+    "image": "team/collaborators/kartik-varadarajan-ppt.png"
   },
   {
     "name": "Ryohei Takada",
     "country": "Japan",
     "role": "Image Giving Doctor",
     "email": "",
-    "institution": "Tokyo Medical and Dental University Hospital · Google Scholar"
+    "institution": "Tokyo Medical and Dental University Hospital · Google Scholar",
+    "image": "team/collaborators/ryohei-takada-ppt.jpg"
   },
   {
     "name": "Maxim Horwitz",
@@ -155,28 +170,34 @@ const collaborators: { name: string; country: string; role: string; email: strin
     "role": "Hand implant",
     "email": "maximhorwitz@gmail.com",
     "institution": "The Hand Doctor – Orthopaedic Hand and Wrist Surgeon",
-    "linkedin": "https://www.linkedin.com/in/maxim-horwitz-59b38112?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+    "linkedin": "https://www.linkedin.com/in/maxim-horwitz-59b38112/",
+    "image": "team/collaborators/maxim-horwitz-ppt.png"
   },
   {
     "name": "Berisha Florent",
     "country": "Germany",
     "role": "Finger implants",
     "email": "Florent.Berisha@klsmartin.com",
-    "institution": "KLS Martin Group"
+    "institution": "KLS Martin Group",
+    "linkedin": "https://www.linkedin.com/in/florent-berisha-06a786211/",
+    "image": "team/collaborators/florent-berisha-ppt.png"
   },
   {
     "name": "Prof Sashin Ahuja",
     "country": "UK",
     "role": "Spine implants (in progress)",
     "email": "sashinahuja@gmail.com",
-    "institution": "Professor Sashin Ahuja"
+    "institution": "Professor Sashin Ahuja",
+    "linkedin": "https://www.linkedin.com/in/sashin-ahuja-a52bb835/",
+    "image": "team/collaborators/sashin-ahuja-ppt.png"
   },
   {
     "name": "Manish Gupta",
     "country": "India",
     "role": "AIMS Delhi (in progress)",
     "email": "manishgupta1307@gmail.com",
-    "institution": ""
+    "institution": "",
+    "linkedin": "https://www.linkedin.com/in/manish-gupta-7666a059/"
   },
   {
     "name": "Dr Srinath Kamineni",
@@ -358,6 +379,7 @@ const Team = () => (
                 <tr key={person.name} className="border-t border-line align-top">
                   <td className="px-5 py-5 text-graphite-500">{index + 1}</td>
                   <th scope="row" className="px-5 py-5 font-normal">
+                    {person.image && <img src={person.image.startsWith('http') ? person.image : `${import.meta.env.BASE_URL}${person.image}`} alt={person.name} loading="lazy" decoding="async" className="mb-3 h-20 w-20 rounded object-cover object-top border border-line" />}
                     <span className="font-medium">{person.name}</span>
                     {person.institution && <span className="mt-2 block text-xs text-graphite-600">{person.institution}</span>}
                     {person.linkedin && <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-accent hover:underline">LinkedIn</a>}
