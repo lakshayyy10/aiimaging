@@ -12,6 +12,8 @@ import { cx } from '../lib/cx';
 type Member = {
   name: string;
   title?: string;
+  country?: string;
+  institution?: string;
   image?: string;
   linkedin?: string;
   email?: string;
@@ -57,8 +59,9 @@ const groups: { title: string; members: Member[] }[] = [
         image:
           'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.18.03.jpeg',
       },
-      { name: 'Soumya', title: 'Technical Director' },
-      { name: 'Ramanathan', title: 'Core Team' },
+      { name: 'Soumya', title: 'Core Team', image: 'team/soumya.png' },
+      { name: 'Ramanathan', title: 'Technical Director', image: 'team/ramanathan.png' },
+      { name: 'Mohammed Adan', title: 'Engineer', image: 'team/mohammed-adan.png' },
     ],
   },
   {
@@ -92,11 +95,10 @@ const groups: { title: string; members: Member[] }[] = [
   },
 ];
 
-const collaborators: { name: string; country: string; role: string; email: string; institution: string; linkedin?: string; image?: string }[] = [
+const collaborators: Member[] = [
   {
     "name": "Dr Andrew Kurmis",
     "country": "Australia",
-    "role": "Image Giving Doctor",
     "email": "andrew_kurmis@hotmail.com",
     "institution": "A/Professor Andrew Kurmis",
     "linkedin": "https://www.linkedin.com/in/andrew-kurmis-07206b88/",
@@ -105,7 +107,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Dr Douglas Chonko",
     "country": "USA",
-    "role": "Image Giving Doctor",
     "email": "Douglas.Chonko@osumc.edu",
     "institution": "Ohio State University Wexner Medical Center",
     "linkedin": "https://www.linkedin.com/in/douglas-chonko-589a6824/",
@@ -114,7 +115,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Dr Glen Purnomo",
     "country": "Indonesia",
-    "role": "Image Giving Doctor",
     "email": "glen.purnomo@yahoo.com",
     "institution": "Orthopaedic and traumatology",
     "linkedin": "https://www.linkedin.com/in/glen-purnomo-a2807115a/",
@@ -123,7 +123,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Dr Asep Santoso",
     "country": "Indonesia",
-    "role": "Image Giving Doctor",
     "email": "glen.purnomo@yahoo.com",
     "institution": "OrthoTV",
     "linkedin": "https://www.linkedin.com/in/asep-santoso-aa524115/",
@@ -132,7 +131,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Nguyen Quang Ton Quyen",
     "country": "Vietnam",
-    "role": "Image Giving Doctor",
     "email": "glen.purnomo@yahoo.com",
     "institution": "Bệnh viện Đa khoa Tâm Anh",
     "linkedin": "https://www.linkedin.com/in/drqtnguyen/",
@@ -141,7 +139,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Gianluca Cusmà Dovico Guatteri M.D",
     "country": "Bahrain",
-    "role": "Image Giving Doctor",
     "email": "gcdg@me.com",
     "institution": "Burjeel, Abu Dhabi",
     "linkedin": "https://www.linkedin.com/in/gianluca-cusm%C3%A0-dovico-guatteri-a2943a40/",
@@ -150,7 +147,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Dr Kartik Varadarajan",
     "country": "USA",
-    "role": "Senior Collaborator",
     "email": "mvkartik@gmail.com",
     "institution": "Kartik Varadarajan",
     "linkedin": "https://www.linkedin.com/in/kartikmv/",
@@ -159,7 +155,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Ryohei Takada",
     "country": "Japan",
-    "role": "Image Giving Doctor",
     "email": "",
     "institution": "Tokyo Medical and Dental University Hospital · Google Scholar",
     "image": "team/collaborators/ryohei-takada-ppt.jpg"
@@ -167,7 +162,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Maxim Horwitz",
     "country": "London, UK",
-    "role": "Hand implant",
     "email": "maximhorwitz@gmail.com",
     "institution": "The Hand Doctor – Orthopaedic Hand and Wrist Surgeon",
     "linkedin": "https://www.linkedin.com/in/maxim-horwitz-59b38112/",
@@ -176,7 +170,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Berisha Florent",
     "country": "Germany",
-    "role": "Finger implants",
     "email": "Florent.Berisha@klsmartin.com",
     "institution": "KLS Martin Group",
     "linkedin": "https://www.linkedin.com/in/florent-berisha-06a786211/",
@@ -185,7 +178,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Prof Sashin Ahuja",
     "country": "UK",
-    "role": "Spine implants (in progress)",
     "email": "sashinahuja@gmail.com",
     "institution": "Professor Sashin Ahuja",
     "linkedin": "https://www.linkedin.com/in/sashin-ahuja-a52bb835/",
@@ -194,7 +186,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Manish Gupta",
     "country": "India",
-    "role": "AIMS Delhi (in progress)",
     "email": "manishgupta1307@gmail.com",
     "institution": "",
     "linkedin": "https://www.linkedin.com/in/manish-gupta-7666a059/"
@@ -202,7 +193,6 @@ const collaborators: { name: string; country: string; role: string; email: strin
   {
     "name": "Dr Srinath Kamineni",
     "country": "",
-    "role": "",
     "email": "srinathkamineni@gmail.com",
     "institution": ""
   }
@@ -213,19 +203,13 @@ const partners = [
     name: 'National Joint Registry / NEC Software Solutions',
     location: 'United Kingdom',
     href: 'https://www.necsws.com',
-    logo: 'https://www.necsws.com/wp-content/themes/nec/NEC/img/NEC_SWS_Lockup.svg',
+    logo: `${import.meta.env.BASE_URL}team/nec-software-solutions.svg`,
   },
   {
     name: 'SRM Institute of Science and Technology',
     location: 'Chennai, India',
     href: 'https://www.srmist.edu.in',
     logo: 'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/d77541e44be753901dc2a9ce403e7f52.jpg',
-  },
-  {
-    name: 'Implant Identifier',
-    location: 'Clinical application partner',
-    href: 'https://implantidentifier.app/',
-    logo: 'https://implantidentifier.app/assets/img/logo.png',
   },
 ];
 
@@ -243,11 +227,11 @@ const Portrait = ({ member }: { member: Member }) => (
     <div className="aspect-[4/5] overflow-hidden rounded border border-line bg-paper-100">
       {member.image ? (
         <img
-          src={member.image}
+          src={member.image.startsWith('http') || member.image.startsWith('/') ? member.image : `${import.meta.env.BASE_URL}${member.image}`}
           alt={member.name}
           loading="lazy"
           decoding="async"
-          className="h-full w-full object-cover grayscale transition duration-700 ease-entrance hover:scale-[1.03] hover:grayscale-0"
+          className="h-full w-full object-cover object-top grayscale transition duration-700 ease-entrance hover:scale-[1.03] hover:grayscale-0"
         />
       ) : (
         // Decorative monogram: the name is printed directly beneath it, so it is
@@ -265,6 +249,8 @@ const Portrait = ({ member }: { member: Member }) => (
     <figcaption className="mt-4">
       <p className="font-display text-[1.0625rem] tracking-[-0.015em]">{member.name}</p>
       {member.title && <p className="t-small mt-1">{member.title}</p>}
+      {member.country && <p className="t-small mt-1">{member.country}</p>}
+      {member.institution && <p className="mt-2 text-xs text-graphite-600">{member.institution}</p>}
       {member.email && (
         <a href={`mailto:${member.email}`} className="mt-3 block break-all text-sm text-accent hover:underline">{member.email}</a>
       )}
@@ -330,7 +316,7 @@ const Team = () => (
     </Section>
 
     {/* Groups */}
-    {groups.map((group, gi) => (
+    {groups.flatMap((group) => group.title === 'Core team' ? [group, { title: 'Collaborators', members: collaborators }] : [group]).map((group, gi) => (
       <Section
         key={group.title}
         tone={gi % 2 === 0 ? 'paper' : 'white'}
@@ -364,36 +350,6 @@ const Team = () => (
         </Container>
       </Section>
     ))}
-
-    <Section tone="white" bordered>
-      <Container>
-        <SectionHeader eyebrow="Collaborators" title="Collaborative list" lead="Clinical contributors and research collaborators supporting our implant imaging work." />
-        <div className="mt-10 overflow-x-auto rounded border border-line">
-          <table className="w-full min-w-[760px] text-left text-sm">
-            <caption className="sr-only">Collaborators, countries, roles and email contacts</caption>
-            <thead className="bg-paper-100">
-              <tr>{['S.No', 'Name', 'Country', 'Role', 'Email'].map((label) => <th key={label} scope="col" className="px-5 py-4 font-semibold">{label}</th>)}</tr>
-            </thead>
-            <tbody>
-              {collaborators.map((person, index) => (
-                <tr key={person.name} className="border-t border-line align-top">
-                  <td className="px-5 py-5 text-graphite-500">{index + 1}</td>
-                  <th scope="row" className="px-5 py-5 font-normal">
-                    {person.image && <img src={person.image.startsWith('http') ? person.image : `${import.meta.env.BASE_URL}${person.image}`} alt={person.name} loading="lazy" decoding="async" className="mb-3 h-20 w-20 rounded object-cover object-top border border-line" />}
-                    <span className="font-medium">{person.name}</span>
-                    {person.institution && <span className="mt-2 block text-xs text-graphite-600">{person.institution}</span>}
-                    {person.linkedin && <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-accent hover:underline">LinkedIn</a>}
-                  </th>
-                  <td className="px-5 py-5">{person.country || '—'}</td>
-                  <td className="px-5 py-5">{person.role || '—'}</td>
-                  <td className="px-5 py-5">{person.email ? <a href={`mailto:${person.email}`} className="text-accent hover:underline">{person.email}</a> : '—'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </Container>
-    </Section>
 
     {/* Partners */}
     <Section tone="ink" className="relative overflow-hidden">
