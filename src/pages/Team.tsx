@@ -33,18 +33,6 @@ const founder = {
 
 const groups: { title: string; members: Member[] }[] = [
   {
-    title: 'Technical advisors',
-    members: [
-      { name: 'Dr. Malathy C', title: 'Professor, Networking & Communications', image: `${import.meta.env.BASE_URL}team/dr-malathy-c.png` },
-      {
-        name: 'Asst. Prof Dr Gayathri M',
-        title: 'Assistant Professor, Computing Technologies',
-        image:
-          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.15.16.jpeg',
-      },
-    ],
-  },
-  {
     title: 'Core team',
     members: [
       {
@@ -62,6 +50,18 @@ const groups: { title: string; members: Member[] }[] = [
       { name: 'Soumya', title: 'Core Team', image: 'team/soumya.png' },
       { name: 'Ramanathan', title: 'Technical Director', image: 'team/ramanathan.png' },
       { name: 'Mohammed Adan', title: 'Engineer', image: 'team/mohammed-adan.png' },
+    ],
+  },
+  {
+    title: 'Technical advisors',
+    members: [
+      { name: 'Dr. Malathy C', title: 'Professor, Networking & Communications', image: `${import.meta.env.BASE_URL}team/dr-malathy-c.png` },
+      {
+        name: 'Asst. Prof Dr Gayathri M',
+        title: 'Assistant Professor, Computing Technologies',
+        image:
+          'https://priyanshsonthalia23-nmbuw.wordpress.com/wp-content/uploads/2025/09/whatsapp-image-2025-09-20-at-00.15.16.jpeg',
+      },
     ],
   },
   {
@@ -316,7 +316,7 @@ const Team = () => (
     </Section>
 
     {/* Groups */}
-    {groups.flatMap((group) => group.title === 'Core team' ? [group, { title: 'Collaborators', members: collaborators }] : [group]).map((group, gi) => (
+    {[{ title: 'Collaborators', members: collaborators }, ...groups].map((group, gi) => (
       <Section
         key={group.title}
         tone={gi % 2 === 0 ? 'paper' : 'white'}
